@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-import tetris.domain.palikat.Nelio;
+import tetris.domain.palikat.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,7 +18,8 @@ import tetris.domain.*;
  * @author topi
  */
 public class TetrisTest {
-    private Palikka t;
+    private Palikka palikka;
+    private Ruudukko ruudukko;
     
     public TetrisTest() {
     }
@@ -26,8 +27,22 @@ public class TetrisTest {
     
     @Before
     public void setUp() {
+        palikka = new Nelio(0, 0);
+        ruudukko = new Ruudukko(8, 10);
     }
-    
+    @Test
+    public void voiSiirtyaTyhjaanRuutuun(){
+        
+        assertTrue(ruudukko.voikoSiirtya(palikka, 5, 5));
+    }
+    @Test 
+    public void eiVoiSiirtyaRuudukonUlkopuolelle(){
+        assertFalse(ruudukko.voikoSiirtya(palikka, 5, 9));
+    }
+    @Test
+    public void voiSiirtyaRuudukonReunaan(){
+        assertTrue(ruudukko.voikoSiirtya(palikka, 6, 5));
+    }
    
    
 }
