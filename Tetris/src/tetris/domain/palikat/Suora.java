@@ -21,7 +21,7 @@ public class Suora extends Palikka {
             {false, true, false, false},
             {false, true, false, false}
         };
-        super.ruudukko = uusiRuudukko;
+        super.ruudukko = uusiRuudukko; 
              
         
     }

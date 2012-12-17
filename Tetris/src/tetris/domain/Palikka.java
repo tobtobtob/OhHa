@@ -3,7 +3,6 @@ package tetris.domain;
 
 
 import java.awt.Color;
-import java.util.*;
 
 public abstract class Palikka {
     

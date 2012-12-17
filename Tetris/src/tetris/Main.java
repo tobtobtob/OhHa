@@ -13,11 +13,11 @@ public class Main {
         Ruudukko ruudukko = new Ruudukko(8, 10);
         tulostaRuudukko(ruudukko.getRuudukko());
         Palikka p = new Suora(3,3);
-        ruudukko.paivitaPalikka(p);
+        ruudukko.paivitaPalikka(p.getRuudukko(), p.getX(), p.getY());
         tulostaRuudukko(ruudukko.getRuudukko());
         ruudukko.tyhjennaRuudukko();
         p.setRuudukko(p.luoKaannos());
-        ruudukko.paivitaPalikka(p);
+        ruudukko.paivitaPalikka(p.getRuudukko(), p.getX(), p.getY());
         tulostaRuudukko(ruudukko.getRuudukko());
 
 
