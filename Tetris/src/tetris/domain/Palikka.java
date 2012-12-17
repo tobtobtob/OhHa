@@ -13,7 +13,7 @@ public abstract class Palikka {
 
     public Palikka(int x, int y, Color vari) {
         
-        this. x = x;
+        this.x = x;
         this.y = y;
         this.vari = vari;
     }
@@ -22,7 +22,7 @@ public abstract class Palikka {
         
         boolean[][] uusiRuudukko = new boolean[ruudukko.length][ruudukko.length];
         
-        for (int i = ruudukko.length-1, a=0; i >= 0; i--, a++) {
+        for (int i = 0, a=0; i <ruudukko.length; i++, a++) {
             for (int j = 0, b=0; j <ruudukko.length ; j++, b++) {
                 uusiRuudukko[a][b] = ruudukko[j][i];
             }
@@ -30,6 +30,14 @@ public abstract class Palikka {
         return uusiRuudukko;
         
     
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     public void setRuudukko(boolean[][] ruudukko) {

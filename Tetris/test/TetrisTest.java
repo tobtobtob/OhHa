@@ -43,6 +43,24 @@ public class TetrisTest {
     public void voiSiirtyaRuudukonReunaan(){
         assertTrue(ruudukko.voikoSiirtya(palikka, 6, 5));
     }
+    @Test
+    public void voiSiirtyaRuudukonPohjalle(){
+        palikka = new Suora(0,0);
+        palikka.setRuudukko(palikka.luoKaannos());
+        assertTrue(ruudukko.voikoSiirtya(palikka, 4, 8));
+    }
+    @Test
+    public void eiVoiSiirtyaToisenPalikanPaalle(){
+        Palikka palikka1 = new Suora(4, 6);
+        ruudukko.paivitaPalikka(palikka1);
+        assertFalse(ruudukko.voikoSiirtya(palikka, 4, 8));
+    }
+    @Test
+    public void voiSiirtyaToisenPalikanViereen(){
+        Palikka palikka1 = new Suora(4, 6);
+        ruudukko.paivitaPalikka(palikka1);
+        assertTrue(ruudukko.voikoSiirtya(palikka, 3, 8));
+    }
    
    
 }
