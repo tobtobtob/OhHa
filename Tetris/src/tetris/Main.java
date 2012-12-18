@@ -20,12 +20,13 @@ public class Main {
         ohjain.start();
 //        Ruudukko ruudukko = new Ruudukko(8, 10);
 //        tulostaRuudukko(ruudukko.getRuudukko());
-//        Palikka p = new Suora(3,3);
-//        ruudukko.paivitaPalikka(p.getRuudukko(), p.getX(), p.getY());
+//        Palikka p = new PalikkaJ(3,3);
+//        p.poistaRivi(4);
+//        ruudukko.paivitaPalikka(p);
 //        tulostaRuudukko(ruudukko.getRuudukko());
 //        ruudukko.tyhjennaRuudukko();
 //        p.setRuudukko(p.luoKaannos());
-//        ruudukko.paivitaPalikka(p.getRuudukko(), p.getX(), p.getY());
+//        ruudukko.paivitaPalikka(p);
 //        tulostaRuudukko(ruudukko.getRuudukko());
 
 

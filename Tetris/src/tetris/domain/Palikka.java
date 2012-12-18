@@ -17,6 +17,19 @@ public abstract class Palikka {
         this.vari = vari;
     }
     
+    public void poistaRivi(int rivi){
+        if (rivi<y){
+            return;
+        }
+        else if (rivi>y+ruudukko.length-1){
+            y += 1;
+        }
+        else{
+           pudotaRivi(rivi); 
+        }
+        
+    }
+    
     public boolean[][] luoKaannos(){
         
         boolean[][] uusiRuudukko = new boolean[ruudukko.length][ruudukko.length];
@@ -66,6 +79,21 @@ public abstract class Palikka {
                     
         }
         
+    }
+
+    private void pudotaRivi(int rivi) {
+        int ruudukonRivi = rivi-y;
+        
+        for (int i = ruudukonRivi-1; i >=0; i--) {
+            for (int j = 0; j < ruudukko.length; j++) {
+                ruudukko[i+1][j] = ruudukko[i][j];
+            }
+ 
+        }
+        for (int i = 0; i < ruudukko.length; i++) {
+            ruudukko[0][i] = false;
+        }
+//        ruudukko[1][1] = true;
     }
    
 }

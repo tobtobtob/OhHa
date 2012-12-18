@@ -16,6 +16,21 @@ public class Ruudukko {
     public void tyhjennaRuudukko(){
         ruudukko = new boolean[korkeus][leveys];
     }
+    public int palautaTaysiRivi(){
+        int palikoita;
+        for (int i = 0; i < korkeus; i++) {
+            palikoita = 0;
+            for (int j = 0; j < leveys; j++) {
+                if(ruudukko[i][j]){
+                    palikoita++;
+                }
+            }
+            if(palikoita == leveys){
+                return i;
+            }
+        }
+        return -1;
+    }
     
     public void paivitaPalikka(Palikka paivitettava){
        boolean[][] palikanRuudukko = paivitettava.getRuudukko();
@@ -25,6 +40,7 @@ public class Ruudukko {
                 if(palikanRuudukko[i][j] == true){
                     ruudukko[paivitettava.getY()+i][paivitettava.getX()+j] = true;
                 }
+                
             }
         }
     }

@@ -95,13 +95,18 @@ public class Ohjain extends Timer implements ActionListener {
         }
         else{
             palikat.add(aktiivinen);
+            
+            ruudukko.paivitaPalikat(palikat);
+            tarkastaTaydetRivit();
             aktiivinen = luoSatunnainenPalikka(leveys/2-2, 0);
             if(!ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY())){
                 this.stop();
             }
             pelialusta.paivita();
             
+            
         }
+        
     }
 
     public Palikka getAktiivinen() {
@@ -129,6 +134,19 @@ public class Ohjain extends Timer implements ActionListener {
         if(ruudukko.voikoSiirtya(aktiivinen.luoKaannos(), aktiivinen.getX(), aktiivinen.getY())){
             aktiivinen.setRuudukko(aktiivinen.luoKaannos());
             pelialusta.paivita();
+        }
+    }
+
+    private void tarkastaTaydetRivit() {
+        int poistettavaRivi = ruudukko.palautaTaysiRivi();
+        while(poistettavaRivi != -1){
+            for (Palikka palikka : palikat) {
+                palikka.poistaRivi(poistettavaRivi);
+            }
+            pelialusta.paivita();
+            ruudukko.tyhjennaRuudukko();
+            ruudukko.paivitaPalikat(palikat);
+            poistettavaRivi = ruudukko.palautaTaysiRivi();
         }
     }
     

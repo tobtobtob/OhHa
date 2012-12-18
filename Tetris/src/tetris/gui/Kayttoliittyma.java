@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tetris.gui;
 
 import java.awt.Container;
@@ -10,10 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import tetris.Ohjain;
 
-/**
- *
- * @author topi
- */
+
 public class Kayttoliittyma implements Runnable {
     
     private JFrame frame;

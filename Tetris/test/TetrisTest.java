@@ -71,6 +71,32 @@ public class TetrisTest {
         palikka = new PalikkaZ(0,0);
         assertEquals(palikka.luoKaannos(), kaannettyZ);
     }
+    @Test
+    public void rivinPoistoToimiiPalikalle(){
+        boolean[][] poistettu = {
+            { false, false, false },
+            { false, false , false },
+            { true, true, true }
+        };
+        palikka = new PalikkaT(0,0);
+        palikka.poistaRivi(1);
+        assertEquals(palikka.getRuudukko(), poistettu);
+    }
+    @Test
+    public void rivinPoistoToimiiPalikalleRuudukossa(){
+        boolean[][] poistettu = {
+            { false, false, false },
+            { false, true , false },
+            { false, true, false }
+        };
+        palikka = new PalikkaJ(5, 5);
+        palikka.poistaRivi(7);
+        assertEquals(palikka.getRuudukko(), poistettu);
+    }
+    @Test
+    public void ruudukkoLoytaaTaydetRivit(){
+        
+    }
    
    
 }
