@@ -1,22 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import tetris.domain.palikat.*;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+
+
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tetris.*;
+import org.junit.Before;
+
 import tetris.domain.*;
 
-/**
- *
- * @author topi
- */
 public class TetrisTest {
     private Palikka palikka;
     private Ruudukko ruudukko;
@@ -69,7 +60,7 @@ public class TetrisTest {
             { true, false, false }
         };
         palikka = new PalikkaZ(0,0);
-        assertEquals(palikka.luoKaannos(), kaannettyZ);
+        assertArrayEquals(palikka.luoKaannos(), kaannettyZ);
     }
     @Test
     public void rivinPoistoToimiiPalikalle(){
@@ -80,7 +71,7 @@ public class TetrisTest {
         };
         palikka = new PalikkaT(0,0);
         palikka.poistaRivi(1);
-        assertEquals(palikka.getRuudukko(), poistettu);
+        assertArrayEquals(palikka.getRuudukko(), poistettu);
     }
     @Test
     public void rivinPoistoToimiiPalikalleRuudukossa(){
@@ -91,7 +82,7 @@ public class TetrisTest {
         };
         palikka = new PalikkaJ(5, 5);
         palikka.poistaRivi(7);
-        assertEquals(palikka.getRuudukko(), poistettu);
+        assertArrayEquals(palikka.getRuudukko(), poistettu);
     }
     @Test
     public void ruudukkoLoytaaTaydetRivit(){
