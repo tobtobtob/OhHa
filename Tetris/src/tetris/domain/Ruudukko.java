@@ -1,6 +1,8 @@
 
 package tetris.domain;
 
+import java.util.ArrayList;
+
 public class Ruudukko {
     
     private boolean[][] ruudukko;
@@ -15,24 +17,25 @@ public class Ruudukko {
         ruudukko = new boolean[korkeus][leveys];
     }
     
-    public void paivitaPalikka(boolean[][] palikanRuudukko, int x,int y){
-       
+    public void paivitaPalikka(Palikka paivitettava){
+       boolean[][] palikanRuudukko = paivitettava.getRuudukko();
         
         for (int i = 0; i < palikanRuudukko.length; i++) {
             for (int j = 0; j < palikanRuudukko.length; j++) {
                 if(palikanRuudukko[i][j] == true){
-                    ruudukko[y+i][x+j] = true;
+                    ruudukko[paivitettava.getY()+i][paivitettava.getX()+j] = true;
                 }
             }
         }
     }
     
-    public boolean voikoSiirtya(boolean[][] palikanRuudukko, int x, int y){
-        if(!onkoRuudukonSisalla(palikanRuudukko, x, y)){
+    public boolean voikoSiirtya(Palikka siirrettava, int x, int y){
+        
+        boolean[][] palikanRuudukko = siirrettava.getRuudukko();
+        
+        if(!onkoRuudukonSisalla(siirrettava, x, y)){
             return false;
         }
-//        boolean[][] palikanRuudukko = siirrettava.getRuudukko();
-        
         for (int i = 0; i < palikanRuudukko.length; i++) {
             for (int j = 0; j < palikanRuudukko.length; j++) {
                 if(palikanRuudukko[i][j]&&ruudukko[y+i][x+j]){
@@ -43,9 +46,9 @@ public class Ruudukko {
         return true;
     }
 
-    private boolean onkoRuudukonSisalla(boolean[][] palikanRuudukko, int x, int y) {
+    private boolean onkoRuudukonSisalla(Palikka siirrettava, int x, int y) {
         
-//        boolean[][] palikanRuudukko = siirrettava.getRuudukko();
+        boolean[][] palikanRuudukko = siirrettava.getRuudukko();
         
         for (int i = 0; i < palikanRuudukko.length; i++) {
             for (int j = 0; j < palikanRuudukko.length; j++) {
@@ -65,6 +68,12 @@ public class Ruudukko {
 
     public boolean[][] getRuudukko() {
         return ruudukko;
+    }
+
+    public void paivitaPalikat(ArrayList<Palikka> palikat) {
+        for (Palikka palikka : palikat) {
+            paivitaPalikka(palikka);
+        }
     }
     
     

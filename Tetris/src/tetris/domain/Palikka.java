@@ -55,5 +55,11 @@ public abstract class Palikka {
     public Color getVari(){
         return vari;
     }
+
+    public void siirrä(Suunta suunta) {
+        switch(suunta){
+            case ALAS: y += 1;
+        }
+    }
    
 }

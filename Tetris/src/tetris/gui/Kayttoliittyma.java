@@ -37,7 +37,7 @@ public class Kayttoliittyma implements Runnable {
         frame = new JFrame("Tetris");
         
          
-        frame.setPreferredSize(new Dimension(leveys*ruudunKoko, korkeus*ruudunKoko));
+        frame.setPreferredSize(new Dimension(leveys*ruudunKoko+ruudunKoko, korkeus*ruudunKoko+ruudunKoko));
  
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
  
@@ -50,7 +50,7 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container contentPane) {
         pelialusta = new Pelialusta(ruudunKoko, ohjain);
         contentPane.add(pelialusta);
-        
+        ohjain.setPelialusta(pelialusta);
     }
     
 }
