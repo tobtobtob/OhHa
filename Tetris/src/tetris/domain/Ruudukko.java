@@ -31,9 +31,11 @@ public class Ruudukko {
     
     public boolean voikoSiirtya(Palikka siirrettava, int x, int y){
         
-        boolean[][] palikanRuudukko = siirrettava.getRuudukko();
-        
-        if(!onkoRuudukonSisalla(siirrettava, x, y)){
+        return voikoSiirtya(siirrettava.getRuudukko(), x, y);
+    }
+    
+    public boolean voikoSiirtya(boolean[][] palikanRuudukko, int x, int y){
+        if(!onkoRuudukonSisalla(palikanRuudukko, x, y)){
             return false;
         }
         for (int i = 0; i < palikanRuudukko.length; i++) {
@@ -46,9 +48,9 @@ public class Ruudukko {
         return true;
     }
 
-    private boolean onkoRuudukonSisalla(Palikka siirrettava, int x, int y) {
+    private boolean onkoRuudukonSisalla(boolean[][] palikanRuudukko, int x, int y) {
         
-        boolean[][] palikanRuudukko = siirrettava.getRuudukko();
+
         
         for (int i = 0; i < palikanRuudukko.length; i++) {
             for (int j = 0; j < palikanRuudukko.length; j++) {

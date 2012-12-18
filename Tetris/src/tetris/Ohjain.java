@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.Timer;
 import tetris.domain.*;
-import tetris.domain.palikat.Nelio;
 import tetris.domain.palikat.*;
 import tetris.gui.Pelialusta;
 
@@ -54,11 +53,39 @@ public class Ohjain extends Timer implements ActionListener {
     void lisaaPalikka(Palikka palikka) {
         palikat.add(palikka);
     }
+    public void siirraPalikkaa(Suunta suunta){
+        
+        int siirto;
+        
+        if((suunta == Suunta.OIKEA)||(suunta == Suunta.ALAS)){
+            siirto = 1;
+        }
+        else{
+            siirto = -1;
+        }
+        
+        if(suunta == Suunta.ALAS){
+            if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY()+siirto)){
+                aktiivinen.siirra(suunta);
+                pelialusta.paivita();
+            }
+        }
+        else{
+            if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX()+siirto, aktiivinen.getY())){
+                aktiivinen.siirra(suunta);
+                pelialusta.paivita();
+                
+            }
+        }
+        
+        
+        
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY()+1)){
-            aktiivinen.siirrä(Suunta.ALAS);
+            aktiivinen.siirra(Suunta.ALAS);
             ruudukko.tyhjennaRuudukko();
             ruudukko.paivitaPalikat(palikat);
             pelialusta.paivita();
@@ -96,6 +123,13 @@ public class Ohjain extends Timer implements ActionListener {
        }
         return null;
            
+    }
+
+    public void kaannaPalikka() {
+        if(ruudukko.voikoSiirtya(aktiivinen.luoKaannos(), aktiivinen.getX(), aktiivinen.getY())){
+            aktiivinen.setRuudukko(aktiivinen.luoKaannos());
+            pelialusta.paivita();
+        }
     }
     
     

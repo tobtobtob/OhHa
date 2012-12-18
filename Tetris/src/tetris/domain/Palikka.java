@@ -21,8 +21,8 @@ public abstract class Palikka {
         
         boolean[][] uusiRuudukko = new boolean[ruudukko.length][ruudukko.length];
         
-        for (int i = 0, a=0; i <ruudukko.length; i++, a++) {
-            for (int j = 0, b=0; j <ruudukko.length ; j++, b++) {
+        for (int i = 0, a=0; a <ruudukko.length; i++, a++) {
+            for (int j = ruudukko.length-1, b=0; b <ruudukko.length ; j--, b++) {
                 uusiRuudukko[a][b] = ruudukko[j][i];
             }
         }
@@ -48,18 +48,24 @@ public abstract class Palikka {
     }
     
     
-    public void siirra(Suunta suunta){
-        
-    }
+   
     
     public Color getVari(){
         return vari;
     }
 
-    public void siirrä(Suunta suunta) {
-        switch(suunta){
-            case ALAS: y += 1;
+    public void siirra(Suunta suunta) {
+        if(suunta == Suunta.OIKEA){
+            x += 1;
         }
+        if (suunta == Suunta.ALAS){
+            y+= 1;
+        }
+        if(suunta == Suunta.VASEN){
+            x -=1;         
+                    
+        }
+        
     }
    
 }

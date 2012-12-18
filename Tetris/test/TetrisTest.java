@@ -61,6 +61,16 @@ public class TetrisTest {
         ruudukko.paivitaPalikka(palikka1);
         assertTrue(ruudukko.voikoSiirtya(palikka, 3, 8));
     }
+    @Test 
+    public void kaantaminenToimii(){
+        boolean[][] kaannettyZ = {
+            { false, true, false },
+            { true, true , false },
+            { true, false, false }
+        };
+        palikka = new PalikkaZ(0,0);
+        assertEquals(palikka.luoKaannos(), kaannettyZ);
+    }
    
    
 }
