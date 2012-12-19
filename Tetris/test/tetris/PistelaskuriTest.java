@@ -24,7 +24,7 @@ public class PistelaskuriTest {
     public void pisteidenLisaysToimii(){
         laskuri.kasvataPisteita(4);
         assertEquals(800, laskuri.getPisteet());
-        assertEquals(1, laskuri.getTaso());
+        
     }
     @Test
     public void tasokasvaaKunRiittavastiPisteita(){

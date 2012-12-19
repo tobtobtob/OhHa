@@ -20,6 +20,7 @@ public class NappaimistonKuuntelija implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        System.out.println("fizz");
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
             ohjain.siirraPalikkaa(Suunta.VASEN);
            
