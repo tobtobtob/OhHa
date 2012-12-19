@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.EtchedBorder;
 import tetris.Ohjain;
+import tetris.gui.kuuntelijat.TaukoKuuntelija;
 import tetris.gui.kuuntelijat.UusiPeliKuuntelija;
 
 
@@ -45,7 +46,7 @@ public class Kayttoliittyma implements Runnable {
         frame = new JFrame("Tetris");
         
         int todellinenLeveys = leveys*ruudunKoko+ (int) (ruudunKoko*0.5);
-        int todellinenKorkeus = korkeus*ruudunKoko+ (int) (ruudunKoko*1.5)+29;
+        int todellinenKorkeus = korkeus*ruudunKoko+ (int) (ruudunKoko*1.5)+30;
         frame.setPreferredSize(new Dimension(todellinenLeveys, todellinenKorkeus));
  
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -79,15 +80,16 @@ public class Kayttoliittyma implements Runnable {
         
         valikko =new JPanel();
         valikko.setLayout(new BoxLayout(valikko, BoxLayout.X_AXIS));
-        uusiPeli = new JButton("uusi peli");
+        uusiPeli = new JButton("Uusi peli");
         uusiPeli.addActionListener(new UusiPeliKuuntelija(ohjain, frame));
-        tauko = new JButton("tauko");
-        pisteet = new Pistenaytto("0", ohjain);
+        tauko = new JButton("Tauko");
+        tauko.addActionListener(new TaukoKuuntelija(tauko, ohjain, frame));
+        pisteet = new Pistenaytto(String.format("%010d", 0), ohjain);
         ohjain.setPistenaytto((Paivitettava) pisteet);
         valikko.add(uusiPeli);
         valikko.add(tauko);
         valikko.add(pisteet);
-        valikko.setBorder(new EtchedBorder());
+        
         return valikko;
     }
     

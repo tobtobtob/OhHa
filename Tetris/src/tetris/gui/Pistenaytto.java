@@ -19,7 +19,7 @@ public class Pistenaytto extends JLabel implements Paivitettava {
 
     @Override
     public void paivita() {
-        super.setText( ""+ohjain.getPisteet());
+        super.setText( String.format("%010d", ohjain.getPisteet()));
     }
     
 }

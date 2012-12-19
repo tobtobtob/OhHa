@@ -19,6 +19,7 @@ public class Ohjain extends Timer implements ActionListener {
     private Paivitettava pelialusta;
     private Pistelaskuri pistelaskuri;
     private Paivitettava pistenaytto;
+    private boolean tauko;
     
     public Ohjain(int leveys, int korkeus){
         super(1000, null);
@@ -27,7 +28,7 @@ public class Ohjain extends Timer implements ActionListener {
         pistelaskuri = new Pistelaskuri();
         this.leveys = leveys;
         setInitialDelay(2000);
-        
+        tauko = false;
     }
     public void luoUusiPeli(){
         pistelaskuri.nollaa();
@@ -35,6 +36,7 @@ public class Ohjain extends Timer implements ActionListener {
         ruudukko.tyhjennaRuudukko();
         pistenaytto.paivita();
         aktiivinen = luoSatunnainenPalikka();
+        pelialusta.paivita();
         
    
     }
@@ -50,7 +52,7 @@ public class Ohjain extends Timer implements ActionListener {
     }
     
 
-    public Iterable<Palikka> getPalikat() {
+    public ArrayList<Palikka> getPalikat() {
         return palikat;
     }
     
@@ -154,6 +156,7 @@ public class Ohjain extends Timer implements ActionListener {
             poistettujaRiveja++;
             poistettavaRivi = ruudukko.palautaTaysiRivi();
         }
+        poistaTyhjatPalikat();
         pistelaskuri.kasvataPisteita(poistettujaRiveja);
         pistenaytto.paivita();
     }
@@ -164,6 +167,33 @@ public class Ohjain extends Timer implements ActionListener {
 
     public int getPisteet() {
         return pistelaskuri.getPisteet();
+    }
+
+    public void setTauko() {
+        tauko = !tauko;
+    }
+
+    public boolean getTauko() {
+        return tauko;
+    }
+
+    public void poistaTyhjatPalikat() {
+        for (int i = 0; i < palikat.size(); i++) {
+            boolean[][] palikanRuudukko = palikat.get(i).getRuudukko();
+            boolean tyhja = true; 
+            for (int rivi = 0; rivi < palikanRuudukko.length; rivi++) {
+                for (int sarake = 0; sarake < palikanRuudukko.length; sarake++) {
+                    if(palikanRuudukko[rivi][sarake]){
+                        tyhja = false;
+                        break;
+                    }
+                }
+             
+            }
+            if (tyhja){
+                palikat.remove(i);
+            }
+        }
     }
     
     
