@@ -5,6 +5,7 @@ package tetris.domain;
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,6 +14,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import tetris.domain.Palikka;
 import tetris.domain.Ruudukko;
+import tetris.domain.palikat.Nelio;
+import tetris.domain.palikat.PalikkaJ;
 import tetris.domain.palikat.Suora;
 
 /**
@@ -38,6 +41,7 @@ public class RuudukkoTest {
     @Before
     public void setUp() {
         ruudukko = new Ruudukko(8,10);
+        palikka = new Nelio(0,0);
     }
     
     @After
@@ -74,7 +78,19 @@ public class RuudukkoTest {
         assertTrue(ruudukko.voikoSiirtya(palikka, 3, 8));
     }
     @Test
-    public void ruudukkoLoytaaTaydetRivit(){
+    public void palautusOikeaKunEiTaysiaRiveja(){
+        assertEquals(ruudukko.palautaTaysiRivi(), -1);
+    }
+    
+    @Test
+    public void loytaaTaydenRivin(){
         
+        ArrayList<Palikka> palikat = new ArrayList<Palikka>();
+        palikat.add(new Nelio(0, 5));
+        palikat.add(new PalikkaJ(2, 4));
+        palikat.add(new Nelio(4, 6));
+        palikat.add(new Nelio(6, 5));
+        ruudukko.paivitaPalikat(palikat);
+        assertEquals(ruudukko.palautaTaysiRivi(), 6);
     }
 }
