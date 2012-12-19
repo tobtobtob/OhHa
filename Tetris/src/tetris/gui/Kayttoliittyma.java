@@ -1,6 +1,7 @@
 
 package tetris.gui;
 
+import tetris.gui.kuuntelijat.NappaimistonKuuntelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.EtchedBorder;
 import tetris.Ohjain;
+import tetris.gui.kuuntelijat.UusiPeliKuuntelija;
 
 
 public class Kayttoliittyma implements Runnable {
@@ -24,6 +26,8 @@ public class Kayttoliittyma implements Runnable {
     private Pelialusta pelialusta;
     private JButton uusiPeli, tauko;
     private JLabel pisteet;
+    private JPanel valikko;
+    private JLabel taso;
     private JPanel paneeli;
 
     public Kayttoliittyma(int leveys, int korkeus, int ruudunKoko, Ohjain ohjain) {
@@ -40,7 +44,7 @@ public class Kayttoliittyma implements Runnable {
         frame = new JFrame("Tetris");
         
         int todellinenLeveys = leveys*ruudunKoko+ (int) (ruudunKoko*0.5);
-        int todellinenKorkeus = korkeus*ruudunKoko+ (int) (ruudunKoko*1.5)+30;
+        int todellinenKorkeus = korkeus*ruudunKoko+ (int) (ruudunKoko*1.5)+29;
         frame.setPreferredSize(new Dimension(todellinenLeveys, todellinenKorkeus));
  
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -55,8 +59,9 @@ public class Kayttoliittyma implements Runnable {
         
         pelialusta = new Pelialusta(ruudunKoko, ohjain);
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
-        paneeli = luoPaneeli();
-        container.add(paneeli);
+        valikko = luoValikko();
+        
+        container.add(valikko);
         container.add(pelialusta);
         
         
@@ -68,18 +73,20 @@ public class Kayttoliittyma implements Runnable {
         frame.setFocusable(true);
     }
 
-    private JPanel luoPaneeli() {
+    private JPanel luoValikko() {
         
-        paneeli =new JPanel();
-        paneeli.setLayout(new BoxLayout(paneeli, BoxLayout.X_AXIS));
+        valikko =new JPanel();
+        valikko.setLayout(new BoxLayout(valikko, BoxLayout.X_AXIS));
         uusiPeli = new JButton("uusi peli");
+        uusiPeli.addActionListener(new UusiPeliKuuntelija(ohjain, frame));
         tauko = new JButton("tauko");
-        pisteet = new JLabel("0");
-        paneeli.add(uusiPeli);
-        paneeli.add(tauko);
-        paneeli.add(pisteet);
-        paneeli.setBorder(new EtchedBorder());
-        return paneeli;
+        pisteet = new Pistenaytto("0", ohjain);
+        ohjain.setPistenaytto((Paivitettava) pisteet);
+        valikko.add(uusiPeli);
+        valikko.add(tauko);
+        valikko.add(pisteet);
+        valikko.setBorder(new EtchedBorder());
+        return valikko;
     }
     
 }

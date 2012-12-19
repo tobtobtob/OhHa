@@ -7,7 +7,7 @@ import java.util.Random;
 import javax.swing.Timer;
 import tetris.domain.*;
 import tetris.domain.palikat.*;
-import tetris.gui.Pelialusta;
+import tetris.gui.Paivitettava;
 
 
 public class Ohjain extends Timer implements ActionListener {
@@ -16,24 +16,36 @@ public class Ohjain extends Timer implements ActionListener {
     private Ruudukko ruudukko;
     private ArrayList<Palikka> palikat;
     private int leveys;
-    private Pelialusta pelialusta;
+    private Paivitettava pelialusta;
     private Pistelaskuri pistelaskuri;
+    private Paivitettava pistenaytto;
     
     public Ohjain(int leveys, int korkeus){
         super(1000, null);
         palikat = new ArrayList<Palikka>();
         ruudukko = new Ruudukko(leveys, korkeus);
         pistelaskuri = new Pistelaskuri();
-        
-        
-        
         this.leveys = leveys;
         setInitialDelay(2000);
+        
+    }
+    public void luoUusiPeli(){
+        pistelaskuri.nollaa();
+        palikat.clear();
+        ruudukko.tyhjennaRuudukko();
+        pistenaytto.paivita();
+        aktiivinen = luoSatunnainenPalikka();
+        
+   
+    }
 
+    public void setPistenaytto(Paivitettava pistenaytto) {
+        this.pistenaytto = pistenaytto;
     }
     
+    
 
-    public void setPelialusta(Pelialusta pelialusta) {
+    public void setPelialusta(Paivitettava pelialusta) {
         this.pelialusta = pelialusta;
     }
     
@@ -81,20 +93,15 @@ public class Ohjain extends Timer implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY()+1)){
-            aktiivinen.siirra(Suunta.ALAS);
-            ruudukko.tyhjennaRuudukko();
-            ruudukko.paivitaPalikat(palikat);
-            pelialusta.paivita();
-            
-            
-            
+            siirraPalikkaa(Suunta.ALAS);
+       
         }
         else{
             palikat.add(aktiivinen);
             
             ruudukko.paivitaPalikat(palikat);
             tarkastaTaydetRivit();
-            aktiivinen = luoSatunnainenPalikka(leveys/2-2, 0);
+            aktiivinen = luoSatunnainenPalikka();
             if(!ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY())){
                 this.stop();
             }
@@ -110,8 +117,10 @@ public class Ohjain extends Timer implements ActionListener {
     }
     
    
-    public Palikka luoSatunnainenPalikka(int x, int y){
+    public Palikka luoSatunnainenPalikka(){
         int uusi = new Random().nextInt(7);
+        int x = leveys/2-2;
+        int y = 0;
         
        switch (uusi){
            case 0: return new Nelio(x, y);
@@ -146,10 +155,15 @@ public class Ohjain extends Timer implements ActionListener {
             poistettavaRivi = ruudukko.palautaTaysiRivi();
         }
         pistelaskuri.kasvataPisteita(poistettujaRiveja);
+        pistenaytto.paivita();
     }
 
     public void luoAktiivinenPalikka() {
-         aktiivinen = luoSatunnainenPalikka(leveys/2-2, 0);
+         aktiivinen = luoSatunnainenPalikka();
+    }
+
+    public int getPisteet() {
+        return pistelaskuri.getPisteet();
     }
     
     

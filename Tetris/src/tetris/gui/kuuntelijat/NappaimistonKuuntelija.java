@@ -1,5 +1,5 @@
 
-package tetris.gui;
+package tetris.gui.kuuntelijat;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,7 +10,7 @@ import tetris.domain.Suunta;
 public class NappaimistonKuuntelija implements KeyListener {
     private Ohjain ohjain;
 
-    NappaimistonKuuntelija(Ohjain ohjain) {
+    public NappaimistonKuuntelija(Ohjain ohjain) {
         this.ohjain = ohjain;
     }
     @Override
@@ -20,7 +20,6 @@ public class NappaimistonKuuntelija implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("fizz");
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
             ohjain.siirraPalikkaa(Suunta.VASEN);
            

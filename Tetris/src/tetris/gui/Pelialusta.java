@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import tetris.Ohjain;
 import tetris.domain.Palikka;
 
-public class Pelialusta extends JPanel {
+public class Pelialusta extends JPanel implements Paivitettava {
     private int ruudunKoko;
     private Ohjain ohjain;
 

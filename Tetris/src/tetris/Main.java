@@ -12,10 +12,10 @@ public class Main {
     //testikoodia.
     
     public static void main(String[] args) {
-        Ohjain ohjain = new Ohjain(10, 15);
+        Ohjain ohjain = new Ohjain(14, 20);
 //        ohjain.lisaaPalikka(new Suora(4, 5));
 //         ohjain.lisaaPalikka(new Nelio(0, 0));
-        Kayttoliittyma k = new Kayttoliittyma(10, 15, 20, ohjain);
+        Kayttoliittyma k = new Kayttoliittyma(14, 20, 20, ohjain);
         SwingUtilities.invokeLater(k);
         ohjain.start();
 //        Ruudukko ruudukko = new Ruudukko(8, 10);

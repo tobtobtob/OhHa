@@ -32,6 +32,11 @@ public class Pistelaskuri {
     public int getTaso() {
         return taso;
     }
+
+    void nollaa() {
+        pisteet = 0;
+        taso = 0;
+    }
     
     
 }
