@@ -6,5 +6,5 @@ maanantai 17.12: 3h - ohjelmointia, aihemäärittelyn viimeistely
 maanantai 17.12: 1h - testien kirjoittelua, ohjelmointia
 tiistai 18.12: 6h - ohjelmointia
 keskiviikko 19.12: 1h - testejä, luokkakaavion piirtäminen
-keskiviikko 19.12: 2h - Käyttöliittymän kertausta ja toteutusta
+keskiviikko 19.12: 3h - Käyttöliittymän kertausta ja toteutusta
 

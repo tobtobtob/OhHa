@@ -5,6 +5,7 @@ import tetris.gui.kuuntelijat.NappaimistonKuuntelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -58,6 +59,7 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container container) {
         
         pelialusta = new Pelialusta(ruudunKoko, ohjain);
+        pelialusta.setBorder(BorderFactory.createEtchedBorder());
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
         valikko = luoValikko();
         
