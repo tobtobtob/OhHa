@@ -44,9 +44,11 @@ public class Kayttoliittyma implements Runnable {
 
     private void luoKomponentit(Container contentPane) {
         pelialusta = new Pelialusta(ruudunKoko, ohjain);
-        contentPane.add(pelialusta);
+        
         ohjain.setPelialusta(pelialusta);
         ohjain.addActionListener(ohjain);
+        ohjain.luoAktiivinenPalikka();
+        contentPane.add(pelialusta);
         frame.addKeyListener(new NappaimistonKuuntelija(ohjain));
     }
     

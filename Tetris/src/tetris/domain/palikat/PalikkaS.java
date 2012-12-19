@@ -8,7 +8,7 @@ import tetris.domain.Palikka;
 public class PalikkaS extends Palikka {
 
     public PalikkaS(int x, int y) {
-        super(x, y, Color.WHITE);
+        super(x, y, Color.CYAN);
         boolean[][] uusiRuudukko = {
             { false, false, false },
             { false, true , true },

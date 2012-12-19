@@ -32,10 +32,11 @@ public class Ohjain extends Timer implements ActionListener {
         palikat = new ArrayList<Palikka>();
         ruudukko = new Ruudukko(leveys, korkeus);
         
-//        aktiivinen = luoSatunnainenPalikka(leveys/2-2, 0);
+        
         
         this.leveys = leveys;
         setInitialDelay(2000);
+//        aktiivinen = luoSatunnainenPalikka(leveys/2-2, 0);
     }
     
 
@@ -85,10 +86,7 @@ public class Ohjain extends Timer implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(aktiivinen == null){
-            aktiivinen = luoSatunnainenPalikka(leveys/2-2, 0);
-            pelialusta.paivita();
-        }
+        
         if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY()+1)){
             aktiivinen.siirra(Suunta.ALAS);
             ruudukko.tyhjennaRuudukko();
@@ -153,6 +151,10 @@ public class Ohjain extends Timer implements ActionListener {
             ruudukko.paivitaPalikat(palikat);
             poistettavaRivi = ruudukko.palautaTaysiRivi();
         }
+    }
+
+    public void luoAktiivinenPalikka() {
+         aktiivinen = luoSatunnainenPalikka(leveys/2-2, 0);
     }
     
     
