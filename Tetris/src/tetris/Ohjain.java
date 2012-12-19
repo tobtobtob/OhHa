@@ -17,11 +17,13 @@ public class Ohjain extends Timer implements ActionListener {
     private ArrayList<Palikka> palikat;
     private int leveys;
     private Pelialusta pelialusta;
+    private Pistelaskuri pistelaskuri;
     
     public Ohjain(int leveys, int korkeus){
         super(1000, null);
         palikat = new ArrayList<Palikka>();
         ruudukko = new Ruudukko(leveys, korkeus);
+        pistelaskuri = new Pistelaskuri();
         
         
         
@@ -133,14 +135,17 @@ public class Ohjain extends Timer implements ActionListener {
 
     private void tarkastaTaydetRivit() {
         int poistettavaRivi = ruudukko.palautaTaysiRivi();
+        int poistettujaRiveja = 0;
         while(poistettavaRivi != -1){
             for (Palikka palikka : palikat) {
                 palikka.poistaRivi(poistettavaRivi);
             }            
             ruudukko.tyhjennaRuudukko();
             ruudukko.paivitaPalikat(palikat);
+            poistettujaRiveja++;
             poistettavaRivi = ruudukko.palautaTaysiRivi();
         }
+        pistelaskuri.kasvataPisteita(poistettujaRiveja);
     }
 
     public void luoAktiivinenPalikka() {
