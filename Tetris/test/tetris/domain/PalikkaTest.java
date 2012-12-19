@@ -1,9 +1,6 @@
 package tetris.domain;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,10 +15,7 @@ import tetris.domain.palikat.PalikkaJ;
 import tetris.domain.palikat.PalikkaT;
 import tetris.domain.palikat.PalikkaZ;
 
-/**
- *
- * @author topi
- */
+
 public class PalikkaTest {
     private Palikka palikka;
     private Ruudukko ruudukko;
@@ -56,6 +50,7 @@ public class PalikkaTest {
         palikka = new PalikkaZ(0,0);
         assertArrayEquals(palikka.luoKaannos(), kaannettyZ);
     }
+    
     @Test
     public void rivinPoistoToimiiPalikalle(){
         boolean[][] poistettu = {
@@ -77,5 +72,10 @@ public class PalikkaTest {
         palikka = new PalikkaJ(5, 5);
         palikka.poistaRivi(7);
         assertArrayEquals(palikka.getRuudukko(), poistettu);
+    }
+    @Test
+    public void palikanSiirtaminenToimii(){
+        palikka.siirra(Suunta.OIKEA);
+        assertEquals(1, palikka.getX());
     }
 }

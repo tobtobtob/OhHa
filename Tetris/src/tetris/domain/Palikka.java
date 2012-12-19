@@ -71,10 +71,10 @@ public abstract class Palikka {
         if(suunta == Suunta.OIKEA){
             x += 1;
         }
-        if (suunta == Suunta.ALAS){
+        else if (suunta == Suunta.ALAS){
             y+= 1;
         }
-        if(suunta == Suunta.VASEN){
+        else if(suunta == Suunta.VASEN){
             x -=1;         
                     
         }
@@ -93,7 +93,7 @@ public abstract class Palikka {
         for (int i = 0; i < ruudukko.length; i++) {
             ruudukko[0][i] = false;
         }
-//        ruudukko[1][1] = true;
+
     }
    
 }

@@ -1,9 +1,5 @@
 package tetris.domain;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import java.util.ArrayList;
 import org.junit.After;
@@ -18,10 +14,7 @@ import tetris.domain.palikat.Nelio;
 import tetris.domain.palikat.PalikkaJ;
 import tetris.domain.palikat.Suora;
 
-/**
- *
- * @author topi
- */
+
 public class RuudukkoTest {
     
     private Ruudukko ruudukko;

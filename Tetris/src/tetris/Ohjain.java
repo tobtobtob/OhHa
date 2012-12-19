@@ -9,16 +9,7 @@ import tetris.domain.*;
 import tetris.domain.palikat.*;
 import tetris.gui.Pelialusta;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-
-/**
- *
- * @author topi
- */
 public class Ohjain extends Timer implements ActionListener {
     
     private Palikka aktiivinen;
@@ -36,7 +27,7 @@ public class Ohjain extends Timer implements ActionListener {
         
         this.leveys = leveys;
         setInitialDelay(2000);
-//        aktiivinen = luoSatunnainenPalikka(leveys/2-2, 0);
+
     }
     
 
@@ -145,8 +136,7 @@ public class Ohjain extends Timer implements ActionListener {
         while(poistettavaRivi != -1){
             for (Palikka palikka : palikat) {
                 palikka.poistaRivi(poistettavaRivi);
-            }
-//            pelialusta.paivita();
+            }            
             ruudukko.tyhjennaRuudukko();
             ruudukko.paivitaPalikat(palikat);
             poistettavaRivi = ruudukko.palautaTaysiRivi();
