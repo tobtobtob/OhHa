@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import javax.swing.border.EtchedBorder;
+
 import tetris.Ohjain;
 import tetris.gui.kuuntelijat.TaukoKuuntelija;
 import tetris.gui.kuuntelijat.UusiPeliKuuntelija;
@@ -46,7 +46,7 @@ public class Kayttoliittyma implements Runnable {
         frame = new JFrame("Tetris");
         
         int todellinenLeveys = leveys*ruudunKoko+ (int) (ruudunKoko*0.5);
-        int todellinenKorkeus = korkeus*ruudunKoko+ (int) (ruudunKoko*1.5)+30;
+        int todellinenKorkeus = korkeus*ruudunKoko+ (int) (ruudunKoko*1.5)+29;
         frame.setPreferredSize(new Dimension(todellinenLeveys, todellinenKorkeus));
  
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
