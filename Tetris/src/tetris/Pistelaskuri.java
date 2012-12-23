@@ -11,13 +11,23 @@ public class Pistelaskuri {
         pisteet = 0;
         taso = 1;
     }
-    public void kasvataPisteita(int rivejaTuhottu){
-        if(rivejaTuhottu <= 0){
+    /**
+     * Metodi kasvattaa pisteitä riippuen poistettujen rivien määrästä ja tasosta.
+     * Pistelisäys kasvaa eksponentaalisesti poistettujen rivien määrän
+     * kasvaessa
+     * 
+     * @param samalla kerralla tuhottujen rivien määrä 
+     */
+    public void kasvataPisteita(int rivejaPoistettu){
+        if(rivejaPoistettu <= 0){
             return;
         }
-        pisteet += 50*taso*Math.pow(rivejaTuhottu, 2);
+        pisteet += 50*taso*Math.pow(rivejaPoistettu, 2);
         tarkistaTaso();
     }
+    /**
+     * Metodi kasvattaa tasoa, jos pistemäärä kasvaa riittävän suureksi.
+     */
 
     private void tarkistaTaso() {
         if(pisteet-taso*(taso+1)*1000>=0){
@@ -32,8 +42,10 @@ public class Pistelaskuri {
     public int getTaso() {
         return taso;
     }
-
-    void nollaa() {
+    /**
+     * Metodi nollaa pistetilanteen.
+     */
+    public void nollaa() {
         pisteet = 0;
         taso = 0;
     }
