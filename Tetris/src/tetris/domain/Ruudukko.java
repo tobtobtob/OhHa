@@ -13,9 +13,18 @@ public class Ruudukko {
         this.korkeus = korkeus;
         ruudukko = new boolean[korkeus][leveys];
     }
+    /**
+     * Metodi sijoittaa muuttujaan ruudukko uuden samankokoisen taulukon.
+     */
     public void tyhjennaRuudukko(){
         ruudukko = new boolean[korkeus][leveys];
     }
+    /**
+     * Metodi käy läpi ruudukon rivejä, kunnes löytää rivin, jolla kaikki 
+     * alkiot ovat "true"
+     * 
+     * @return ensimmäinen metodin löytämä rivi, jolla kaikki alkiot ovat "true"
+     */
     public int palautaTaysiRivi(){
         int palikoita;
         for (int i = 0; i < korkeus; i++) {
@@ -31,6 +40,13 @@ public class Ruudukko {
         }
         return -1;
     }
+    /**
+     * Metodi päivittää ruudukkoon parametrina annetun palikan. Jos palikan 
+     * ruudukossa on arvo "true", metodi muuttaa ruudukkoon samaan paikkaan arvon
+     * true.
+     * 
+     * @param palikka, joka päivitetään ruudukkoon. 
+     */
     
     public void paivitaPalikka(Palikka paivitettava){
        boolean[][] palikanRuudukko = paivitettava.getRuudukko();
@@ -44,12 +60,28 @@ public class Ruudukko {
             }
         }
     }
-    
+    /**
+     * Metodi tarkistaa voiko parametrina annettu palikka siirtyä ruutuun (x,y)
+     * 
+     * @param palikka, jota siirretään
+     * @param siirryttävän ruudun x-koordinaatti
+     * @param siirryttävän ruudun y-koordinaatti
+     * @return true, jos siirto mahdollinen, muuten false
+     */
     public boolean voikoSiirtya(Palikka siirrettava, int x, int y){
         
         return voikoSiirtya(siirrettava.getRuudukko(), x, y);
     }
     
+    /**
+     * Metodi tarkistaa sopiiko parametrina annettu ruudukko ruudukon paikkaan 
+     * (x,y).
+     * 
+     * @param palikanRuudukko
+     * @param siirryttävän paikan x-koordinaatti
+     * @param siirryttävän paikan y-koordinaatti
+     * @return true, jos ruudukko sopii, muuten false
+     */
     public boolean voikoSiirtya(boolean[][] palikanRuudukko, int x, int y){
         if(!onkoRuudukonSisalla(palikanRuudukko, x, y)){
             return false;
@@ -63,6 +95,16 @@ public class Ruudukko {
         }
         return true;
     }
+    /**
+     * Metodi tarkistaa, onko parametrina annettu ruudukko tämän ruudukon sisällä.
+     * ulkopuolella olevat "false" alkiot eivät vaikuta tulokseen, kunhan kaikki
+     * "true" alkiot ovat ruudukon sisällä.
+     * 
+     * @param tarkastettava ruudukko
+     * @param tarkastettavan ruudukon x-sijainti
+     * @param tarkastettavan ruudukon y-sijainti
+     * @return true, jos ruudukon sisällä, false, jos ulkona.
+     */
 
     private boolean onkoRuudukonSisalla(boolean[][] palikanRuudukko, int x, int y) {
         
@@ -87,6 +129,13 @@ public class Ruudukko {
     public boolean[][] getRuudukko() {
         return ruudukko;
     }
+    
+    /**
+     * Metodi päivittää parametrina annetut palikat tähän ruudukkoon kutsumalla 
+     * paivitaPalikka() -metodia yksitellen jokaiselle palikalle.
+     * 
+     * @param ArrayList palikoista, jotka päivitetään ruudukkoon. 
+     */
 
     public void paivitaPalikat(ArrayList<Palikka> palikat) {
         for (Palikka palikka : palikat) {

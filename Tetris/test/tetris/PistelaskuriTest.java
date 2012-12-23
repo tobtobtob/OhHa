@@ -33,6 +33,11 @@ public class PistelaskuriTest {
         laskuri.kasvataPisteita(4);
         assertEquals(2, laskuri.getTaso());
     }
+    @Test
+    public void luotaessaPisteetJaTaso0(){
+        assertEquals(0, laskuri.getPisteet());
+        assertEquals(1, laskuri.getTaso());
+    }
     
     
 }

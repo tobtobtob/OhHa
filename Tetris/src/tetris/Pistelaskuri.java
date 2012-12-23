@@ -12,7 +12,7 @@ public class Pistelaskuri {
         taso = 1;
     }
     public void kasvataPisteita(int rivejaTuhottu){
-        if(rivejaTuhottu == 0){
+        if(rivejaTuhottu <= 0){
             return;
         }
         pisteet += 50*taso*Math.pow(rivejaTuhottu, 2);

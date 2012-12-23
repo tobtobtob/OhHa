@@ -19,6 +19,7 @@ public class RuudukkoTest {
     
     private Ruudukko ruudukko;
     private Palikka palikka;
+    private ArrayList<Palikka> palikat;
     
     public RuudukkoTest() {
     }
@@ -35,6 +36,7 @@ public class RuudukkoTest {
     public void setUp() {
         ruudukko = new Ruudukko(8,10);
         palikka = new Nelio(0,0);
+        palikat = new ArrayList<Palikka>();
     }
     
     @After
@@ -78,12 +80,24 @@ public class RuudukkoTest {
     @Test
     public void loytaaTaydenRivin(){
         
-        ArrayList<Palikka> palikat = new ArrayList<Palikka>();
+        
         palikat.add(new Nelio(0, 5));
         palikat.add(new PalikkaJ(2, 4));
         palikat.add(new Nelio(4, 6));
         palikat.add(new Nelio(6, 5));
         ruudukko.paivitaPalikat(palikat);
         assertEquals(ruudukko.palautaTaysiRivi(), 6);
+    }
+    @Test
+    public void loytaaUseammanTaydenRivin(){
+        
+        palikat.add(new Nelio(0,4));
+        palikat.add(new Nelio(2,4));
+        palikat.add(new Nelio(4, 4));
+        palikat.add(new Nelio(6, 4));
+        ruudukko.paivitaPalikat(palikat);
+        
+        
+        
     }
 }

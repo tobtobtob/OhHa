@@ -23,23 +23,12 @@ public class PalikkaTest {
     public PalikkaTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
     public void setUp() {
         palikka = new Nelio(0, 0);
         ruudukko = new Ruudukko(8, 10);
     }
     
-    @After
-    public void tearDown() {
-    }
     @Test 
     public void kaantaminenToimii(){
         boolean[][] kaannettyZ = {

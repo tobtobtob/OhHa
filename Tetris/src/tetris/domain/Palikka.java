@@ -17,6 +17,15 @@ public abstract class Palikka {
         this.vari = vari;
     }
     
+    /**
+     * Metodi tarkistaa, onko palikan ruudukko parametrina annetulla rivillä. 
+     * Jos rivi on palikan alapuolella, palikka putoaa yhden ruudun alaspäin.
+     * Jos rivi on palikan yläpuolella, metodi ei tee mitään.
+     * Jos rivi on palikan kohdalla, metodi poistaa kyseisen rivin kutsumalla
+     * pudotaRivi() metodia.
+     *
+     * @param ruudukon rivi, jolta poistetaan kaikki palikoiden osat. 
+     */
     public void poistaRivi(int rivi){
         if (rivi<y){
             return;
@@ -25,11 +34,16 @@ public abstract class Palikka {
             y += 1;
         }
         else{
-           pudotaRivi(rivi); 
+           pudotaRivi(rivi-y); 
         }
         
     }
-    
+    /**
+     * Metodi palauttaa taulukon, joka on yhden käännöksen verran oikealle 
+     * käännetty versio palikan ruudukosta.
+     * 
+     * @return käännetty ruudukko 
+     */
     public boolean[][] luoKaannos(){
         
         boolean[][] uusiRuudukko = new boolean[ruudukko.length][ruudukko.length];
@@ -66,7 +80,13 @@ public abstract class Palikka {
     public Color getVari(){
         return vari;
     }
-
+    
+    /**
+     * Metodi siirtää palikkaa yhden ruudun verran parametrina annettuun 
+     * suuntaan.
+     * 
+     * @param suunta, johon palikkaa siirretään 
+     */
     public void siirra(Suunta suunta) {
         if(suunta == Suunta.OIKEA){
             x += 1;
@@ -80,9 +100,15 @@ public abstract class Palikka {
         }
         
     }
+    /**
+     * Metodi pudottaa  palikan ruudukosta parametrina annetun rivin. Kyseinen 
+     * rivi poistetaan, ja jokaista sen yläpuolella olevaa riviä siirretään yksi
+     * rivi alaspäin.
+     * 
+     * @param rivi, jolta poistetaan palikan osat.  
+     */
 
-    private void pudotaRivi(int rivi) {
-        int ruudukonRivi = rivi-y;
+    private void pudotaRivi(int ruudukonRivi) {
         
         for (int i = ruudukonRivi-1; i >=0; i--) {
             for (int j = 0; j < ruudukko.length; j++) {
