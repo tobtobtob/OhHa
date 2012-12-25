@@ -9,4 +9,5 @@ keskiviikko 19.12: 1h - testejä, luokkakaavion piirtäminen
 keskiviikko 19.12: 3h - Käyttöliittymän kertausta ja toteutusta
 keskiviikko 19.12: 1h - ohjalmointia, käyttöliittymän kehitystä
 sunnuntai 23.12: 1h - JavaDocin kirjoittamista, testejä
+tiistai 25.12: 1h - ohjelmointia
 
