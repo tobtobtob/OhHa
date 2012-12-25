@@ -10,7 +10,7 @@ import tetris.domain.palikat.*;
 import tetris.gui.Paivitettava;
 
 
-public class Ohjain extends Timer implements ActionListener {
+public class Ohjain {
     
     private Palikka aktiivinen;
     private Ruudukko ruudukko;
@@ -19,16 +19,18 @@ public class Ohjain extends Timer implements ActionListener {
     private Paivitettava pelialusta;
     private Pistelaskuri pistelaskuri;
     private Paivitettava pistenaytto;
-    private boolean tauko;
+    
+    private Kello kello;
     
     public Ohjain(int leveys, int korkeus){
-        super(1000, null);
+       
         palikat = new ArrayList<Palikka>();
         ruudukko = new Ruudukko(leveys, korkeus);
         pistelaskuri = new Pistelaskuri();
         this.leveys = leveys;
-        setInitialDelay(2000);
-        tauko = false;
+        kello = new Kello(this);
+        kello.addActionListener(kello);
+        
     }
     public void luoUusiPeli(){
         pistelaskuri.nollaa();
@@ -37,6 +39,7 @@ public class Ohjain extends Timer implements ActionListener {
         pistenaytto.paivita();
         aktiivinen = luoSatunnainenPalikka();
         pelialusta.paivita();
+        kello.kaynnista();
         
    
     }
@@ -91,8 +94,8 @@ public class Ohjain extends Timer implements ActionListener {
         
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    
+    public void kelloKay() {
         
         if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY()+1)){
             siirraPalikkaa(Suunta.ALAS);
@@ -105,9 +108,10 @@ public class Ohjain extends Timer implements ActionListener {
             tarkastaTaydetRivit();
             aktiivinen = luoSatunnainenPalikka();
             if(!ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY())){
-                this.stop();
+                kello.pysayta();
             }
             pelialusta.paivita();
+            kello.paivita();
             
             
         }
@@ -169,13 +173,6 @@ public class Ohjain extends Timer implements ActionListener {
         return pistelaskuri.getPisteet();
     }
 
-    public void setTauko() {
-        tauko = !tauko;
-    }
-
-    public boolean getTauko() {
-        return tauko;
-    }
 
     public void poistaTyhjatPalikat() {
         for (int i = 0; i < palikat.size(); i++) {
@@ -194,6 +191,10 @@ public class Ohjain extends Timer implements ActionListener {
                 palikat.remove(i);
             }
         }
+    }
+
+    public int getTaso() {
+        return pistelaskuri.getTaso();
     }
     
     

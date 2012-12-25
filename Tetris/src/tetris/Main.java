@@ -17,7 +17,7 @@ public class Main {
 //         ohjain.lisaaPalikka(new Nelio(0, 0));
         Kayttoliittyma k = new Kayttoliittyma(14, 20, 20, ohjain);
         SwingUtilities.invokeLater(k);
-        ohjain.start();
+        
 //        Ruudukko ruudukko = new Ruudukko(8, 10);
 //        tulostaRuudukko(ruudukko.getRuudukko());
 //        Palikka p = new PalikkaJ(3,3);

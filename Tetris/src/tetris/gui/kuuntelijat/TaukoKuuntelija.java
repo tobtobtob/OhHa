@@ -23,8 +23,8 @@ public class TaukoKuuntelija implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        ohjain.setTauko();
-        if(ohjain.getTauko()){
+        
+        if(true){
             taukoNappi.setText("Jatka");
         }
         else{
