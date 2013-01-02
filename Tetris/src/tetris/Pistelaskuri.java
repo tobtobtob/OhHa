@@ -34,11 +34,17 @@ public class Pistelaskuri {
             taso++;
         }
     }
-
+    /**
+     * Palauttaa kerätyt pisteen
+     * @return pisteet
+     */
     public int getPisteet() {
         return pisteet;
     }
-
+    /**
+     * Palauttaa tason  
+     * @return taso
+     */
     public int getTaso() {
         return taso;
     }

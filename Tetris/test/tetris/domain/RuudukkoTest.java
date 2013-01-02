@@ -42,6 +42,13 @@ public class RuudukkoTest {
     @After
     public void tearDown() {
     }
+    
+    @Test
+    public void luotuRuudukkoTyhja(){
+        assertEquals(-1, ruudukko.palautaTaysiRivi());
+    }
+    
+    @Test
     public void voiSiirtyaTyhjaanRuutuun(){
         
         assertTrue(ruudukko.voikoSiirtya(palikka, 5, 5));
@@ -96,8 +103,16 @@ public class RuudukkoTest {
         palikat.add(new Nelio(4, 4));
         palikat.add(new Nelio(6, 4));
         ruudukko.paivitaPalikat(palikat);
-        
-        
-        
+    
+    }
+    @Test
+    public void tyhjennysToimii(){
+        palikat.add(new Nelio(0,4));
+        palikat.add(new Nelio(2,4));
+        palikat.add(new Nelio(4, 4));
+        palikat.add(new Nelio(6, 4));
+        ruudukko.paivitaPalikat(palikat);
+        ruudukko.tyhjenna();
+        assertEquals(-1, ruudukko.palautaTaysiRivi());
     }
 }

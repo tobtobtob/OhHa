@@ -1,13 +1,12 @@
 
 package tetris.domain;
 
-
 import java.awt.Color;
 
 public abstract class Palikka {
     
     protected boolean ruudukko[][];
-    private Color vari;
+    private final Color vari;
     private int x, y;
 
     public Palikka(int x, int y, Color vari) {
@@ -54,29 +53,62 @@ public abstract class Palikka {
             }
         }
         return uusiRuudukko;
-        
-    
     }
-
+    /**
+     * Palauttaa palikan x-sijainnin.
+     * 
+     * @return x
+     */
     public int getX() {
         return x;
     }
-
+    /**
+     * Palauttaa palikan y-sijainnin.
+     * 
+     * @return y
+     */
     public int getY() {
         return y;
     }
-
+    /**
+     * Asettaa palikan ruudukon parametrina annetuksi ruudukoksi.
+     * 
+     * @param ruudukko 
+     */
     public void setRuudukko(boolean[][] ruudukko) {
         this.ruudukko = ruudukko;
     }
-
+    /**
+     * Palauttaa palikan ruudukon.
+     * 
+     * @return ruudukko
+     */
     public boolean[][] getRuudukko() {
         return ruudukko;
     }
-    
-    
+    /**
+     * Metodi käy läpi palikan ruudukon, ja palauttaa false, jos palikassa on 
+     * paloja (true-arvoisia alkioita) jäljellä. Jos palikka on tyhjä metodi 
+     * palauttaa true.
+     * 
+     * @return true, jos palikassa on paloja, false, jos palikka on tyhjä
+     */
+    public boolean onkoTyhja(){
+        for (int rivi = 0; rivi < ruudukko.length; rivi++) {
+            for (int sarake = 0; sarake < ruudukko.length; sarake++) {
+                if(ruudukko[rivi][sarake]){
+                        return false;
+                }
+            }
+        }
+        return true;
+    }
    
-    
+    /**
+     * Palauttaa palikan värin (Color).
+     * 
+     * @return palikan väri
+     */
     public Color getVari(){
         return vari;
     }

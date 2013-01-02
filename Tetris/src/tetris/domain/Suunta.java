@@ -1,13 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tetris.domain;
 
-/**
- *
- * @author topi
- */
+
 public enum Suunta {
-    OIKEA, VASEN, ALAS
+    OIKEA(1), VASEN(-1), ALAS(1);
+    
+    private int siirto;
+    
+    private Suunta(int siirto){
+        this.siirto = siirto;
+    }
+    public int getSiirto(){
+        return siirto;
+    }
+    
 }

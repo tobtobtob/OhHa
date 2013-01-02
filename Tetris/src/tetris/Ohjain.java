@@ -1,14 +1,10 @@
 package tetris;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.Timer;
 import tetris.domain.*;
 import tetris.domain.palikat.*;
 import tetris.gui.Paivitettava;
-
 
 public class Ohjain {
     
@@ -35,20 +31,17 @@ public class Ohjain {
     public void luoUusiPeli(){
         pistelaskuri.nollaa();
         palikat.clear();
-        ruudukko.tyhjennaRuudukko();
+        ruudukko.tyhjenna();
         pistenaytto.paivita();
         aktiivinen = luoSatunnainenPalikka();
         pelialusta.paivita();
         kello.kaynnista();
-        
-   
+ 
     }
 
     public void setPistenaytto(Paivitettava pistenaytto) {
         this.pistenaytto = pistenaytto;
     }
-    
-    
 
     public void setPelialusta(Paivitettava pelialusta) {
         this.pelialusta = pelialusta;
@@ -58,64 +51,50 @@ public class Ohjain {
     public ArrayList<Palikka> getPalikat() {
         return palikat;
     }
-    
-    
-    
+
+    public void vaihdaAktiivinenPalikka() {
+        palikat.add(aktiivinen);
+        
+        ruudukko.paivitaPalikat(palikat);
+        tarkastaTaydetRivit();
+        aktiivinen = luoSatunnainenPalikka();
+        if(!ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY())){
+            kello.pysayta();
+        }
+        pelialusta.paivita();
+        kello.paivita();
+    }
 
     void lisaaPalikka(Palikka palikka) {
         palikat.add(palikka);
     }
-    public void siirraPalikkaa(Suunta suunta){
-        
-        int siirto;
-        
-        if((suunta == Suunta.OIKEA)||(suunta == Suunta.ALAS)){
-            siirto = 1;
-        }
-        else{
-            siirto = -1;
-        }
+    
+    public boolean siirraPalikkaa(Suunta suunta){
         
         if(suunta == Suunta.ALAS){
-            if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY()+siirto)){
+            if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY()+suunta.getSiirto())){
                 aktiivinen.siirra(suunta);
                 pelialusta.paivita();
+                return true;
             }
         }
         else{
-            if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX()+siirto, aktiivinen.getY())){
+            if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX()+suunta.getSiirto(), aktiivinen.getY())){
                 aktiivinen.siirra(suunta);
                 pelialusta.paivita();
+                return true;
                 
             }
         }
-        
-        
-        
+        return false;
     }
 
     
     public void kelloKay() {
         
-        if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY()+1)){
-            siirraPalikkaa(Suunta.ALAS);
-       
-        }
-        else{
-            palikat.add(aktiivinen);
-            
-            ruudukko.paivitaPalikat(palikat);
-            tarkastaTaydetRivit();
-            aktiivinen = luoSatunnainenPalikka();
-            if(!ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY())){
-                kello.pysayta();
-            }
-            pelialusta.paivita();
-            kello.paivita();
-            
-            
-        }
-        
+        if(!siirraPalikkaa(Suunta.ALAS)){
+            vaihdaAktiivinenPalikka();
+        }  
     }
 
     public Palikka getAktiivinen() {
@@ -124,6 +103,7 @@ public class Ohjain {
     
    
     public Palikka luoSatunnainenPalikka(){
+        
         int uusi = new Random().nextInt(7);
         int x = leveys/2-2;
         int y = 0;
@@ -142,6 +122,7 @@ public class Ohjain {
     }
 
     public void kaannaPalikka() {
+        
         if(ruudukko.voikoSiirtya(aktiivinen.luoKaannos(), aktiivinen.getX(), aktiivinen.getY())){
             aktiivinen.setRuudukko(aktiivinen.luoKaannos());
             pelialusta.paivita();
@@ -149,13 +130,17 @@ public class Ohjain {
     }
 
     private void tarkastaTaydetRivit() {
+        
         int poistettavaRivi = ruudukko.palautaTaysiRivi();
+        if(poistettavaRivi == -1){
+            return;
+        }
         int poistettujaRiveja = 0;
         while(poistettavaRivi != -1){
             for (Palikka palikka : palikat) {
                 palikka.poistaRivi(poistettavaRivi);
             }            
-            ruudukko.tyhjennaRuudukko();
+            ruudukko.tyhjenna();
             ruudukko.paivitaPalikat(palikat);
             poistettujaRiveja++;
             poistettavaRivi = ruudukko.palautaTaysiRivi();
@@ -176,19 +161,10 @@ public class Ohjain {
 
     public void poistaTyhjatPalikat() {
         for (int i = 0; i < palikat.size(); i++) {
-            boolean[][] palikanRuudukko = palikat.get(i).getRuudukko();
-            boolean tyhja = true; 
-            for (int rivi = 0; rivi < palikanRuudukko.length; rivi++) {
-                for (int sarake = 0; sarake < palikanRuudukko.length; sarake++) {
-                    if(palikanRuudukko[rivi][sarake]){
-                        tyhja = false;
-                        break;
-                    }
-                }
-             
-            }
-            if (tyhja){
+            
+            if (palikat.get(i).onkoTyhja()){
                 palikat.remove(i);
+                System.out.println("nakkimaa");
             }
         }
     }

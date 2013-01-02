@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Ruudukko {
     
     private boolean[][] ruudukko;
-    private int leveys, korkeus;
+    private final int leveys, korkeus;
 
     public Ruudukko(int leveys, int korkeus) {
         this.leveys = leveys;
@@ -16,7 +16,7 @@ public class Ruudukko {
     /**
      * Metodi sijoittaa muuttujaan ruudukko uuden samankokoisen taulukon.
      */
-    public void tyhjennaRuudukko(){
+    public void tyhjenna(){
         ruudukko = new boolean[korkeus][leveys];
     }
     /**
@@ -125,7 +125,10 @@ public class Ruudukko {
         return true;
         
     }
-
+    /** 
+     * Metodi palauttaa ruudukon totuusarvoja sisältävän taulukon
+     * @return  ruudukko
+     */
     public boolean[][] getRuudukko() {
         return ruudukko;
     }

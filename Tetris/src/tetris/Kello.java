@@ -29,7 +29,7 @@ public class Kello extends Timer implements ActionListener {
         ohjain.kelloKay();
     }
     public void paivita(){
-        this.setDelay(2000-ohjain.getTaso()*100);
+        
     }
     
 }

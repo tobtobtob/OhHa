@@ -28,7 +28,16 @@ public class PalikkaTest {
         palikka = new Nelio(0, 0);
         ruudukko = new Ruudukko(8, 10);
     }
-    
+    @Test
+    public void luotuPalikkaOikeanMuotoinen(){
+        palikka = new PalikkaJ(0,0);
+        boolean[][] oletus = {
+            { false, true, false },
+            { false, true , false },
+            { true, true, false }
+        };
+        assertArrayEquals(oletus, palikka.getRuudukko());
+    }
     @Test 
     public void kaantaminenToimii(){
         boolean[][] kaannettyZ = {
