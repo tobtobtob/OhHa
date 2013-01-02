@@ -7,7 +7,13 @@ public class Ruudukko {
     
     private boolean[][] ruudukko;
     private final int leveys, korkeus;
-
+    /**
+     * Konstruktori luo annettujen parametrien kokoisen taulukon jossa kaikki
+     * alkiot ovat tyhjiä (eli false).
+     * 
+     * @param ruudukon leveys   
+     * @param ruudukon korkeus
+     */
     public Ruudukko(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;

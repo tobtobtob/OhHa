@@ -6,7 +6,10 @@ public class Pistelaskuri {
     
     private int pisteet;
     private int taso;
-
+    
+    /**
+     * Konstruktori luo pistelaskurin jonka pisteet ovat 0 ja taso 1.
+     */
     public Pistelaskuri() {
         pisteet = 0;
         taso = 1;
@@ -16,7 +19,7 @@ public class Pistelaskuri {
      * Pistelisäys kasvaa eksponentaalisesti poistettujen rivien määrän
      * kasvaessa
      * 
-     * @param samalla kerralla tuhottujen rivien määrä 
+     * @param samalla kerralla poistettujen rivien määrä 
      */
     public void kasvataPisteita(int rivejaPoistettu){
         if(rivejaPoistettu <= 0){

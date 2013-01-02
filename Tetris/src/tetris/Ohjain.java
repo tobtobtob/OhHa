@@ -60,6 +60,7 @@ public class Ohjain {
         aktiivinen = luoSatunnainenPalikka();
         if(!ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY())){
             kello.pysayta();
+            return;
         }
         pelialusta.paivita();
         kello.paivita();
@@ -131,7 +132,7 @@ public class Ohjain {
 
     private void tarkastaTaydetRivit() {
         
-        int poistettavaRivi = ruudukko.palautaTaysiRivi();
+        int poistettavaRivi = ruudukko.palautaTaysiRivi();        
         if(poistettavaRivi == -1){
             return;
         }
@@ -164,7 +165,7 @@ public class Ohjain {
             
             if (palikat.get(i).onkoTyhja()){
                 palikat.remove(i);
-                System.out.println("nakkimaa");
+                
             }
         }
     }
@@ -172,6 +173,5 @@ public class Ohjain {
     public int getTaso() {
         return pistelaskuri.getTaso();
     }
-    
-    
+        
 }

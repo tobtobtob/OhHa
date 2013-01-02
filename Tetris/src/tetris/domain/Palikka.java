@@ -8,7 +8,14 @@ public abstract class Palikka {
     protected boolean ruudukko[][];
     private final Color vari;
     private int x, y;
-
+    
+    /**
+     * Palikan konstruktorissa määritetään sen koordinaatit ja väri. 
+     * 
+     * @param palikan x-sijainti
+     * @param palikan y-sijainti
+     * @param palikan väri
+     */
     public Palikka(int x, int y, Color vari) {
         
         this.x = x;
