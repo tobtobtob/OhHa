@@ -9,11 +9,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import tetris.domain.Palikka;
 import tetris.domain.palikat.PalikkaZ;
+import tetris.domain.palikat.Suora;
 
 
 public class OhjainTest {
     private Ohjain ohjain;
-    private Palikka palikka;
+    private Palikka palikka, palikka2;
+   
     
     
     public OhjainTest() {
@@ -53,5 +55,9 @@ public class OhjainTest {
         assertEquals(1, ohjain.getPalikat().size());
     }
     
-    
+    public void lisaaPalikat(Palikka... palikat){
+        for (Palikka palikka : palikat) {
+            ohjain.lisaaPalikka(palikka);
+        }
+    }
 }

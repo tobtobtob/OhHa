@@ -1,7 +1,9 @@
 
 package tetris;
 
-
+/**
+ * Pistelaskuri pitää kirjaa pisteistä ja pelin sen hetkisestä tasosta.
+ */
 public class Pistelaskuri {
     
     private int pisteet;

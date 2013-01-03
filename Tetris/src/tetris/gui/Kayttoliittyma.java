@@ -28,8 +28,6 @@ public class Kayttoliittyma implements Runnable {
     private JButton uusiPeli, tauko;
     private JLabel pisteet;
     private JPanel valikko;
-    private JLabel taso;
-    private JPanel paneeli;
 
     public Kayttoliittyma(int leveys, int korkeus, int ruudunKoko, Ohjain ohjain) {
         this.leveys = leveys;
@@ -49,11 +47,13 @@ public class Kayttoliittyma implements Runnable {
         frame.setPreferredSize(new Dimension(todellinenLeveys, todellinenKorkeus));
  
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
- 
+        
         luoKomponentit(frame.getContentPane());
  
         frame.pack();
+        frame.setResizable(false);
         frame.setVisible(true);
+        
     }
 
     private void luoKomponentit(Container container) {
@@ -72,6 +72,7 @@ public class Kayttoliittyma implements Runnable {
         container.add(pelialusta);
         frame.addKeyListener(new NappaimistonKuuntelija(ohjain));
         frame.setFocusable(true);
+        
     }
 
     private JPanel luoValikko() {

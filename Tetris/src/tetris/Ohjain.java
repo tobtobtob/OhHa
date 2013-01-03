@@ -6,7 +6,10 @@ import java.util.Random;
 import tetris.domain.*;
 import tetris.domain.palikat.*;
 import tetris.gui.Paivitettava;
-
+/**
+ * Ohjain hallitsee pelilogiikkaa ohjaamalla putoavaa palikkaa ja poistamalla
+ * täydet rivit. Pelitilanteen muuttuessa ohjain päivittää käyttöliittymän.
+ */
 public class Ohjain {
     
     private Palikka aktiivinen;
@@ -54,6 +57,7 @@ public class Ohjain {
         aktiivinen = luoSatunnainenPalikka();
         if(!ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY())){
             kello.pysayta();
+            aktiivinen = null;
             paivitaKayttoliittyma();
             return;
         }
