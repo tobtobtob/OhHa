@@ -9,9 +9,10 @@ public class Main {
  
     
     public static void main(String[] args) {
+        
         Ohjain ohjain = new Ohjain(14, 20);
-
         Kayttoliittyma k = new Kayttoliittyma(14, 20, 20, ohjain);
+        ohjain.luoUusiPeli();
         SwingUtilities.invokeLater(k);
 
         

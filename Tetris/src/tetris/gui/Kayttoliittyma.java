@@ -67,9 +67,8 @@ public class Kayttoliittyma implements Runnable {
         container.add(pelialusta);
         
         
-        ohjain.setPelialusta(pelialusta);
+        ohjain.lisaaPaivitettava(pelialusta);
         
-        ohjain.luoAktiivinenPalikka();
         container.add(pelialusta);
         frame.addKeyListener(new NappaimistonKuuntelija(ohjain));
         frame.setFocusable(true);
@@ -84,7 +83,7 @@ public class Kayttoliittyma implements Runnable {
         tauko = new JButton("Tauko");
         tauko.addActionListener(new TaukoKuuntelija(tauko, ohjain, frame));
         pisteet = new Pistenaytto(String.format("%010d", 0), ohjain);
-        ohjain.setPistenaytto((Paivitettava) pisteet);
+        ohjain.lisaaPaivitettava((Paivitettava) pisteet);
         valikko.add(uusiPeli);
         valikko.add(tauko);
         valikko.add(pisteet);

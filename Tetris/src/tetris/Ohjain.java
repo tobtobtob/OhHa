@@ -1,6 +1,7 @@
 package tetris;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import tetris.domain.*;
 import tetris.domain.palikat.*;
@@ -12,11 +13,10 @@ public class Ohjain {
     private Ruudukko ruudukko;
     private ArrayList<Palikka> palikat;
     private int leveys;
-    private Paivitettava pelialusta;
-    private Pistelaskuri pistelaskuri;
-    private Paivitettava pistenaytto;
-    
+    private Pistelaskuri pistelaskuri;    
     private Kello kello;
+    private List<Paivitettava> paivitettavat;
+    private boolean kaynnissa;
     
     public Ohjain(int leveys, int korkeus){
        
@@ -26,27 +26,21 @@ public class Ohjain {
         this.leveys = leveys;
         kello = new Kello(this);
         kello.addActionListener(kello);
+        paivitettavat = new ArrayList<Paivitettava>();
         
     }
     public void luoUusiPeli(){
+        
         pistelaskuri.nollaa();
         palikat.clear();
-        ruudukko.tyhjenna();
-        pistenaytto.paivita();
+        ruudukko.tyhjenna();        
         aktiivinen = luoSatunnainenPalikka();
-        pelialusta.paivita();
+        kaynnissa = true;
+        paivitaKayttoliittyma();
         kello.kaynnista();
+        
  
     }
-
-    public void setPistenaytto(Paivitettava pistenaytto) {
-        this.pistenaytto = pistenaytto;
-    }
-
-    public void setPelialusta(Paivitettava pelialusta) {
-        this.pelialusta = pelialusta;
-    }
-    
 
     public ArrayList<Palikka> getPalikat() {
         return palikat;
@@ -60,9 +54,10 @@ public class Ohjain {
         aktiivinen = luoSatunnainenPalikka();
         if(!ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY())){
             kello.pysayta();
+            paivitaKayttoliittyma();
             return;
         }
-        pelialusta.paivita();
+        paivitaKayttoliittyma();
         kello.paivita();
     }
 
@@ -75,21 +70,21 @@ public class Ohjain {
         if(suunta == Suunta.ALAS){
             if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY()+suunta.getSiirto())){
                 aktiivinen.siirra(suunta);
-                pelialusta.paivita();
+                paivitaKayttoliittyma();
                 return true;
             }
         }
         else{
             if(ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX()+suunta.getSiirto(), aktiivinen.getY())){
                 aktiivinen.siirra(suunta);
-                pelialusta.paivita();
+                paivitaKayttoliittyma();
                 return true;
                 
             }
         }
         return false;
     }
-
+    
     
     public void kelloKay() {
         
@@ -126,10 +121,10 @@ public class Ohjain {
         
         if(ruudukko.voikoSiirtya(aktiivinen.luoKaannos(), aktiivinen.getX(), aktiivinen.getY())){
             aktiivinen.setRuudukko(aktiivinen.luoKaannos());
-            pelialusta.paivita();
+            paivitaKayttoliittyma();
         }
     }
-
+    
     private void tarkastaTaydetRivit() {
         
         int poistettavaRivi = ruudukko.palautaTaysiRivi();        
@@ -148,7 +143,16 @@ public class Ohjain {
         }
         poistaTyhjatPalikat();
         pistelaskuri.kasvataPisteita(poistettujaRiveja);
-        pistenaytto.paivita();
+        paivitaKayttoliittyma();
+    }
+    
+    public void paivitaKayttoliittyma(){
+        for (Paivitettava paivitettava : paivitettavat) {
+            paivitettava.paivita();
+        }
+    }
+    public void lisaaPaivitettava(Paivitettava p){
+        paivitettavat.add(p);
     }
 
     public void luoAktiivinenPalikka() {
@@ -173,5 +177,22 @@ public class Ohjain {
     public int getTaso() {
         return pistelaskuri.getTaso();
     }
+    
+    public void setKaynnissa(){
+        
+        kaynnissa = !kaynnissa;
+        
+        if(!kaynnissa){
+            kello.stop();            
+        }
+        else{
+            kello.start();
+        }
+    }
+
+    public boolean getKaynnissa() {
+        return kaynnissa;
+    }
+    
         
 }
