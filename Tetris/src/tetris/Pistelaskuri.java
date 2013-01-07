@@ -35,7 +35,7 @@ public class Pistelaskuri {
      */
 
     private void tarkistaTaso() {
-        if(pisteet-taso*(taso+1)*1000>=0){
+        if(pisteet-taso*(taso+1)*500>=0){
             taso++;
         }
     }
@@ -58,7 +58,7 @@ public class Pistelaskuri {
      */
     public void nollaa() {
         pisteet = 0;
-        taso = 0;
+        taso = 1;
     }
     
     

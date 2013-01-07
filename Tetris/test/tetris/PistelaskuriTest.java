@@ -19,6 +19,7 @@ public class PistelaskuriTest {
     @Before
     public void setUp() {
         laskuri = new Pistelaskuri();
+        
     }
     @Test
     public void pisteidenLisaysToimii(){
@@ -31,7 +32,7 @@ public class PistelaskuriTest {
         laskuri.kasvataPisteita(4);
         laskuri.kasvataPisteita(4);
         laskuri.kasvataPisteita(4);
-        assertEquals(2, laskuri.getTaso());
+        assertEquals(3, laskuri.getTaso());
     }
     @Test
     public void luotaessaPisteetJaTaso0(){
