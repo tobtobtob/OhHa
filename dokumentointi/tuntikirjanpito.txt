@@ -13,3 +13,4 @@ tiistai 25.12: 1h - ohjelmointia
 tiistai 1.1: 1h - testejen kirjoittamista
 keskiviikko 2.1: 1h - Javadocin kirjoittamista, refaktorointia
 torstai 3.1: 1h - refaktorointia
+maanantai 7.1 1h - sekvenssikaavioiden piirtäminen, JavaDoc

@@ -2,7 +2,11 @@
 package tetris.domain;
 
 import java.util.ArrayList;
-
+/**
+ * Ruudukko pitää kirjaa pelialueella olevista palikoista totuusarvoja sisältävässä
+ * taulukossaan. Ruudukon avulla tarkistetaan palikoiden liikkeiden ja käännöksien
+ * laillisuus, ja poistetaan täyttyneet rivit.
+ */
 public class Ruudukko {
     
     private boolean[][] ruudukko;

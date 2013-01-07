@@ -6,7 +6,11 @@ import tetris.domain.Palikka;
 
 
 public class PalikkaZ extends Palikka {
-
+    /**
+     * Konstruktori luo luokan nimen mukaisen palikan
+     * @param palikan x-koordinaatti
+     * @param palikan y-koordinaatti
+     */
     public PalikkaZ(int x, int y) {
         super(x, y, Color.GREEN);
         boolean[][] uusiRuudukko = {

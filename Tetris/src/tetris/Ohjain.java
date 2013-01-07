@@ -123,8 +123,9 @@ public class Ohjain {
 
     public void kaannaPalikka() {
         
-        if(ruudukko.voikoSiirtya(aktiivinen.luoKaannos(), aktiivinen.getX(), aktiivinen.getY())){
-            aktiivinen.setRuudukko(aktiivinen.luoKaannos());
+        boolean[][] kaannos = aktiivinen.luoKaannos();
+        if(ruudukko.voikoSiirtya(kaannos, aktiivinen.getX(), aktiivinen.getY())){
+            aktiivinen.setRuudukko(kaannos);
             paivitaKayttoliittyma();
         }
     }

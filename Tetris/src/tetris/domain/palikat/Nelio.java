@@ -5,7 +5,11 @@ import java.awt.Color;
 import tetris.domain.Palikka;
 
 public class Nelio extends Palikka {
-    
+    /**
+     * Konstruktori luo luokan nimen muotoisen palikan
+     * @param palikan x-koordinaatti
+     * @param palikan y-koordinaatti
+     */
     public Nelio(int x, int y){
         super(x, y, Color.ORANGE);
         boolean[][] uusiRuudukko = {

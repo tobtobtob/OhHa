@@ -75,5 +75,24 @@ public class PalikkaTest {
     public void palikanSiirtaminenToimii(){
         palikka.siirra(Suunta.OIKEA);
         assertEquals(1, palikka.getX());
+        palikka.siirra(Suunta.ALAS);
+        assertEquals(1, palikka.getY());
+        
+    
     }
+    @Test
+    public void onkoTyhjaMetodiToimii(){
+       boolean[][] tyhja = {
+            { false, false, false },
+            { false, false , false },
+            { false, false, false }
+        };
+       palikka.setRuudukko(tyhja);
+       assertTrue(palikka.onkoTyhja());
+    }
+    @Test
+    public void onkoTyhjaToimiiJosPalikkaEiTyhja(){
+        assertFalse(palikka.onkoTyhja());
+    }
+    
 }

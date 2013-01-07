@@ -54,7 +54,7 @@ public class Pistelaskuri {
         return taso;
     }
     /**
-     * Metodi nollaa pistetilanteen.
+     * Metodi nollaa pistetilanteen ja tason.
      */
     public void nollaa() {
         pisteet = 0;

@@ -56,8 +56,8 @@ public class OhjainTest {
     }
     
     public void lisaaPalikat(Palikka... palikat){
-        for (Palikka palikka : palikat) {
-            ohjain.lisaaPalikka(palikka);
+        for (Palikka lisattava : palikat) {
+            ohjain.lisaaPalikka(lisattava);
         }
     }
 }
