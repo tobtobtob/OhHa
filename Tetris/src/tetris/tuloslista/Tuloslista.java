@@ -46,13 +46,13 @@ public class Tuloslista {
         }
         return tulokset;
     }
-    public ArrayList<String> getTulokset(int kuinkaMonta){
+    public String getTulokset(int kuinkaMonta){
         ArrayList<Tulos> tulokset = luoTuloslista();
-        ArrayList<String> palautus = new ArrayList<String>();
+       String palautus = "";
         
         Collections.sort(tulokset);
         for (int i = 0; i <= Math.min(kuinkaMonta, tulokset.size()-1); i++) {
-            palautus.add(tulokset.get(i).toString());
+            palautus += tulokset.get(i).toString() +"\n";
         }
         return palautus;
     }

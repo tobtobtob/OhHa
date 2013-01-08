@@ -25,11 +25,7 @@ public class TaukoKuuntelija implements ActionListener {
         
         ohjain.setKaynnissa();
         
-        if(ohjain.getKaynnissa()){
-            frame.setFocusable(true);
-            frame.requestFocusInWindow();
-        }
-        
+     
     }
     
     

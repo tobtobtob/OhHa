@@ -7,8 +7,10 @@ import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
@@ -17,7 +19,7 @@ import tetris.gui.kuuntelijat.TaukoKuuntelija;
 import tetris.gui.kuuntelijat.UusiPeliKuuntelija;
 
 
-public class Kayttoliittyma implements Runnable {
+public class Kayttoliittyma implements Runnable, Paivitettava {
     
     private JFrame frame;
     private int leveys;
@@ -49,7 +51,7 @@ public class Kayttoliittyma implements Runnable {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         luoKomponentit(frame.getContentPane());
- 
+        ohjain.lisaaPaivitettava(this);
         frame.pack();
         frame.setResizable(false);
         frame.setVisible(true);
@@ -90,6 +92,28 @@ public class Kayttoliittyma implements Runnable {
         valikko.add(pisteet);
         
         return valikko;
+    }
+
+    @Override
+    public void paivita() {
+        
+        if(!ohjain.getKaynnissa()){
+            frame.setFocusable(false);
+            
+        }
+        else{
+            frame.setFocusable(true);
+            frame.requestFocusInWindow();
+        }
+        if(ohjain.getPelinLoppu()){
+            tulosIkkuna();
+        }
+    }
+    public void tulosIkkuna(){
+        String nimimerkki = JOptionPane.showInputDialog("Sait "+ohjain.getPisteet()+" pistettä. "
+                + "anna nimesi:");
+        ohjain.tallennaPisteet(nimimerkki);
+        JOptionPane.showMessageDialog(frame, ohjain.getTulokset());
     }
     
 }

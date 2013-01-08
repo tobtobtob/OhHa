@@ -119,7 +119,6 @@ public class Ruudukko {
     private boolean onkoRuudukonSisalla(boolean[][] palikanRuudukko, int x, int y) {
         
 
-        
         for (int i = 0; i < palikanRuudukko.length; i++) {
             for (int j = 0; j < palikanRuudukko.length; j++) {
                 if(palikanRuudukko[i][j]){

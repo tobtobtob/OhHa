@@ -36,8 +36,8 @@ public class TuloslistaTest {
     public void listaLukeeJaAntaaOikeanTuloksen(){
         
         lista.kirjoitaTulos("nakki", 3);
-        String tulos = lista.getTulokset(1).get(0);
-        assertEquals("nakki, 3 pistettä", tulos);
+        String tulos = lista.getTulokset(1);
+        assertEquals("nakki, 3 pistettä\n", tulos);
         
     }
     @Test
@@ -45,9 +45,9 @@ public class TuloslistaTest {
         
         lista.kirjoitaTulos("herp", 3);
         lista.kirjoitaTulos("derp", 99);
-        ArrayList<String> tulokset = lista.getTulokset(10);
-        assertEquals("derp, 99 pistettä", tulokset.get(0));
-        assertEquals("herp, 3 pistettä", tulokset.get(1));
+        String[] tulokset = lista.getTulokset(10).split("\n");
+        assertEquals("derp, 99 pistettä", tulokset[0]);
+        assertEquals("herp, 3 pistettä", tulokset[1]);
     }
     
     

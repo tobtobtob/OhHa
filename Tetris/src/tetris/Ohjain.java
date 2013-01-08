@@ -6,6 +6,7 @@ import java.util.Random;
 import tetris.domain.*;
 import tetris.domain.palikat.*;
 import tetris.gui.Paivitettava;
+import tetris.tuloslista.Tuloslista;
 /**
  * Ohjain hallitsee pelilogiikkaa ohjaamalla putoavaa palikkaa ja poistamalla
  * täydet rivit. Pelitilanteen muuttuessa ohjain päivittää käyttöliittymän.
@@ -20,6 +21,8 @@ public class Ohjain {
     private Kello kello;
     private List<Paivitettava> paivitettavat;
     private boolean kaynnissa;
+    private Tuloslista tuloslista;
+    private boolean pelinLoppu;
     
     public Ohjain(int leveys, int korkeus){
        
@@ -30,7 +33,7 @@ public class Ohjain {
         kello = new Kello(this);
         kello.addActionListener(kello);
         paivitettavat = new ArrayList<Paivitettava>();
-        
+        tuloslista = new Tuloslista();
     }
     public void luoUusiPeli(){
         
@@ -41,6 +44,7 @@ public class Ohjain {
         kaynnissa = true;
         paivitaKayttoliittyma();
         kello.kaynnista();
+        pelinLoppu = false;
         
  
     }
@@ -58,6 +62,7 @@ public class Ohjain {
         if(!ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY())){
             kello.pysayta();
             aktiivinen = null;
+            pelinLoppu = true;
             paivitaKayttoliittyma();
             return;
         }
@@ -133,9 +138,7 @@ public class Ohjain {
     private void tarkastaTaydetRivit() {
         
         int poistettavaRivi = ruudukko.palautaTaysiRivi();        
-        if(poistettavaRivi == -1){
-            return;
-        }
+        
         int poistettujaRiveja = 0;
         while(poistettavaRivi != -1){
             for (Palikka palikka : palikat) {
@@ -193,10 +196,25 @@ public class Ohjain {
         else{
             kello.start();
         }
+        paivitaKayttoliittyma();
     }
 
     public boolean getKaynnissa() {
         return kaynnissa;
+    }
+
+    public void tallennaPisteet(String nimimerkki) {
+        if(nimimerkki.equals("")){
+            nimimerkki = "anonymous";
+        }
+        tuloslista.kirjoitaTulos(nimimerkki, getPisteet());
+    }
+
+    public boolean getPelinLoppu() {
+        return pelinLoppu;
+    }
+    public String getTulokset(){
+        return tuloslista.getTulokset(10);
     }
     
         

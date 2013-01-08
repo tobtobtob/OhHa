@@ -20,9 +20,7 @@ public class UusiPeliKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         ohjain.luoUusiPeli();
-        frame.setFocusable(true);
-        frame.requestFocusInWindow();
-        
+     
     }
     
     
