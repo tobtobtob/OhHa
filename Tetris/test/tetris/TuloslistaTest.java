@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tetris;
 
 import tetris.tuloslista.Tuloslista;
@@ -13,10 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author topi
- */
+
 public class TuloslistaTest {
     
     private Tuloslista lista;
@@ -31,7 +25,10 @@ public class TuloslistaTest {
         lista = new Tuloslista();
         lista.tyhjenna();
     }
-    
+    @After
+    public void tyhjennys(){
+        lista.tyhjenna();
+    }
     @Test
     public void listaLukeeJaAntaaOikeanTuloksen(){
         

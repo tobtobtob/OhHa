@@ -23,7 +23,8 @@ public class Ohjain {
     private boolean kaynnissa;
     private Tuloslista tuloslista;
     private boolean pelinLoppu;
-    
+    private boolean peliOhi;
+
     public Ohjain(int leveys, int korkeus){
        
         palikat = new ArrayList<Palikka>();
@@ -42,9 +43,11 @@ public class Ohjain {
         ruudukko.tyhjenna();        
         aktiivinen = luoSatunnainenPalikka();
         kaynnissa = true;
+        peliOhi = false;
         paivitaKayttoliittyma();
         kello.kaynnista();
         pelinLoppu = false;
+        
         
  
     }
@@ -63,6 +66,7 @@ public class Ohjain {
             kello.pysayta();
             aktiivinen = null;
             pelinLoppu = true;
+            peliOhi = true;
             paivitaKayttoliittyma();
             return;
         }
@@ -186,9 +190,9 @@ public class Ohjain {
         return pistelaskuri.getTaso();
     }
     
-    public void setKaynnissa(){
+    public void setKaynnissa(boolean kaynnissa){
         
-        kaynnissa = !kaynnissa;
+        this.kaynnissa = kaynnissa;
         
         if(!kaynnissa){
             kello.stop();            
@@ -216,6 +220,15 @@ public class Ohjain {
     public String getTulokset(){
         return tuloslista.getTulokset(10);
     }
+
+    public void setPelinLoppu(boolean b) {
+        pelinLoppu = false;
+    }
+    
+    public boolean onkoPeliOhi() {
+        return peliOhi;
+    }
+
     
         
 }

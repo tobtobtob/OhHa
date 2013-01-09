@@ -1,22 +1,18 @@
 
 package tetris.gui;
 
-import tetris.gui.kuuntelijat.NappaimistonKuuntelija;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-
 import tetris.Ohjain;
-import tetris.gui.kuuntelijat.TaukoKuuntelija;
-import tetris.gui.kuuntelijat.UusiPeliKuuntelija;
+import tetris.gui.kuuntelijat.NappaimistonKuuntelija;
+import tetris.gui.kuuntelijat.NappienKuuntelija;
 
 
 public class Kayttoliittyma implements Runnable, Paivitettava {
@@ -28,8 +24,8 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     private Ohjain ohjain;
     private Pelialusta pelialusta;
     private JButton uusiPeli, tauko;
-    private JLabel pisteet;
     private JPanel valikko;
+    private JButton tulokset;
 
     public Kayttoliittyma(int leveys, int korkeus, int ruudunKoko, Ohjain ohjain) {
         this.leveys = leveys;
@@ -81,15 +77,16 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
         
         valikko =new JPanel();
         valikko.setLayout(new BoxLayout(valikko, BoxLayout.X_AXIS));
+        tulokset = new JButton("Tulokset");
         uusiPeli = new JButton("Uusi peli");
-        uusiPeli.addActionListener(new UusiPeliKuuntelija(ohjain, frame));
-        tauko = new JButton("Tauko");
-        tauko.addActionListener(new TaukoKuuntelija(tauko, ohjain, frame));
-        pisteet = new Pistenaytto(String.format("%010d", 0), ohjain);
-        ohjain.lisaaPaivitettava((Paivitettava) pisteet);
+        tauko = new JButton("Tauko");       
+        NappienKuuntelija kuuntelija = new NappienKuuntelija(tauko, uusiPeli, tulokset, ohjain, frame);
+        uusiPeli.addActionListener(kuuntelija);
+        tauko.addActionListener(kuuntelija);
+        tulokset.addActionListener(kuuntelija);
+        valikko.add(tulokset);
         valikko.add(uusiPeli);
         valikko.add(tauko);
-        valikko.add(pisteet);
         
         return valikko;
     }
@@ -110,10 +107,11 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
         }
     }
     public void tulosIkkuna(){
-        String nimimerkki = JOptionPane.showInputDialog("Sait "+ohjain.getPisteet()+" pistettä. "
+        String nimimerkki = JOptionPane.showInputDialog("Sait "+ohjain.getPisteet()+" pistettä, "
                 + "anna nimesi:");
         ohjain.tallennaPisteet(nimimerkki);
-        JOptionPane.showMessageDialog(frame, ohjain.getTulokset());
+        JOptionPane.showMessageDialog(frame, ohjain.getTulokset(), "Ennätykset", JOptionPane.PLAIN_MESSAGE);
+        ohjain.setPelinLoppu(false);
     }
     
 }
