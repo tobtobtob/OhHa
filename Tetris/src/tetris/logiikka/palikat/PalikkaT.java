@@ -14,9 +14,9 @@ public class PalikkaT extends Palikka {
     public PalikkaT(int x, int y) {
         super(x, y, Color.LIGHT_GRAY);
         boolean[][] uusiRuudukko = {
-            { false, false, false },
-            { false, true , false },
-            { true, true, true }
+            { false, true, false },
+            { true, true , true },
+            { false, false, false }
         };
         super.ruudukko = uusiRuudukko;
     }

@@ -54,8 +54,8 @@ public class PalikkaTest {
     public void rivinPoistoToimiiPalikalle(){
         boolean[][] poistettu = {
             { false, false, false },
-            { false, false , false },
-            { true, true, true }
+            { false, true , false },
+            { false, false, false }
         };
         palikka = new PalikkaT(0,0);
         palikka.poistaRivi(1);
