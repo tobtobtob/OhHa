@@ -12,17 +12,50 @@ import tetris.tuloslista.Tuloslista;
  * täydet rivit. Pelitilanteen muuttuessa ohjain päivittää käyttöliittymän.
  */
 public class Ohjain {
-    
+    /**
+     * tippuva palikka, jota pelaaja ohjaa nuolinäppäimillä
+     */
     private Palikka aktiivinen;
+    /**
+     * Siirtojen mahdollisuudet tarkastava ruudukko
+     */
     private Ruudukko ruudukko;
+    /**
+     * Lista jo tippuneista palikoista
+     */
     private ArrayList<Palikka> palikat;
+    /**
+     * pelialueen leveys ruuduissa
+     */
     private int leveys;
+    /**
+     * pelin pistelaskuri
+     */
     private Pistelaskuri pistelaskuri;    
+    /**
+     * Kello, joka kutsuu ohjainta tiputtamaan aktiivista palikkaa
+     */
     private Kello kello;
+    /**
+     * Lista päivitettävistä käyttöliittymäkomponenteista
+     */
     private List<Paivitettava> paivitettavat;
+    /**
+     * jos true, peli on käynnissä, jos false, peli on loppunut tai tauolla
+     */
     private boolean kaynnissa;
+    /**
+     * tuloslistaan tallennetaan ja sieltä luetaan ennätykset
+     */
     private Tuloslista tuloslista;
+    /**
+     * pelinLoppu on hetkellinen tila, joka on käyttöliittymälle merkki tulosten
+     * kirjaamis -ikkunan avaamisesta.
+     */
     private boolean pelinLoppu;
+    /**
+     * peliOhi on tila, josta peli voi mennä takaisin käyntiin vain uuden pelin alkaessa.
+     */
     private boolean peliOhi;
     /**
      * Luo ohjaimen, joka luo pelilogiikan annteun kokoiselle pelialueelle.
@@ -82,6 +115,7 @@ public class Ohjain {
             aktiivinen = null;
             pelinLoppu = true;
             peliOhi = true;
+            kaynnissa = false;
             paivitaKayttoliittyma();
             return;
         }

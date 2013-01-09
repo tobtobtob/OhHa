@@ -4,7 +4,9 @@ package tetris.logiikka.palikat;
 import java.awt.Color;
 import tetris.logiikka.Palikka;
 
-
+/**
+ * suorakulmion muotoinen palikka
+ */
 public class Suora extends Palikka {
     /**
      * Konstruktori luo luokan nimen mukaisen palikan

@@ -12,8 +12,17 @@ import tetris.logiikka.Palikka;
  * Grafiikkakomponentti, joka piirtää pelissä olevat palikat sekä pistetilanteen.
  */
 public class Pelialusta extends JPanel implements Paivitettava {
+    /**
+     * yhden ruudun koko pikseleissä
+     */
     private int ruudunKoko;
+    /**
+     * pelilogiikkaa hallitseva ohjain
+     */
     private Ohjain ohjain;
+    /**
+     * tekstinäyttö, johon päivitetään pistetilanne
+     */
     private JLabel pisteet;
     /**
      * Määrittää yhden palan koon pelialustalla parametriksi annetun arvon 

@@ -4,7 +4,9 @@ package tetris.logiikka.palikat;
 import java.awt.Color;
 import tetris.logiikka.Palikka;
 
-
+/**
+ * t-kirjaimen muotoinen palikka
+ */
 public class PalikkaT extends Palikka {
     /**
      * Konstruktori luo luokan nimen mukaisen palikan

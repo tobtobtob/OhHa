@@ -3,7 +3,10 @@ package tetris.logiikka.palikat;
 
 import java.awt.Color;
 import tetris.logiikka.Palikka;
-
+/**
+ * Neliön muotoinen palikka
+ * 
+ */
 public class Nelio extends Palikka {
     /**
      * Konstruktori luo luokan nimen muotoisen palikan

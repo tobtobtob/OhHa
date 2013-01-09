@@ -74,7 +74,9 @@ public class Tuloslista {
     public String getTulokset(int kuinkaMonta){
         ArrayList<Tulos> tulokset = luoTuloslista();
        String palautus = "";
-        
+        if(tulokset.isEmpty()){
+            return "<ei tuloksia>";
+        }
         Collections.sort(tulokset);
         for (int i = 0; i <= Math.min(kuinkaMonta, tulokset.size()-1); i++) {
             palautus += tulokset.get(i).toString() +"\n";

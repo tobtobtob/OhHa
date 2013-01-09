@@ -4,7 +4,7 @@ package tetris.logiikka;
 /**
  * Suunta määrittää palikoiden siirtämiseen käytettävät suunnat oikea, vasen 
  * ja alas. Ylös -suuntaa ei ole, sillä pelissä palikat eivät liiku ylöspäin.
- * @author topatopa
+ * 
  */
 public enum Suunta {
     

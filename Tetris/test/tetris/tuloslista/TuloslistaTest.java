@@ -48,7 +48,7 @@ public class TuloslistaTest {
     }
     @Test
     public void palautusOikeaJosTuloslistaTyhja(){
-        assertEquals("", lista.getTulokset(1));
+        assertEquals("<ei tuloksia>", lista.getTulokset(1));
     }
     
 }

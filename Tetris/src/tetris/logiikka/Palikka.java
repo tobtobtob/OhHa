@@ -2,7 +2,11 @@
 package tetris.logiikka;
 
 import java.awt.Color;
-
+/**
+ * Yhtä palikkaa kuvaava luokka. Palikka tarjoaa kaikki palikkaan liittyvät
+ * toiminnallisuudet kuten kääntäminen ja siirtäminen
+ * 
+ */
 public abstract class Palikka {
     
     /**
