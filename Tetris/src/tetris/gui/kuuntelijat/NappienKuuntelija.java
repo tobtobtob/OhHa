@@ -13,9 +13,17 @@ import tetris.Ohjain;
  * 
  */
 public class NappienKuuntelija implements ActionListener {
-    
+    /**
+     * Pelilogiikan ohjain
+     */
     private Ohjain ohjain;
+    /**
+     * pelialueen pääikkuna
+     */
     private JFrame frame;
+    /**
+     * Nappienkuuntelijan kuuntelema nappi
+     */
     private JButton tauko, uusiPeli, tulokset;
     /**
      * Luo Nappienkuuntelijan, jolla on viitteet kaikkiin nappeihin, frameen

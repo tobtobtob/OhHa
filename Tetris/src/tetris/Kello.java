@@ -9,7 +9,9 @@ import javax.swing.Timer;
  * 
  */
 public class Kello extends Timer implements ActionListener {
-    
+    /**
+     * Pelilogiikan ohjain
+     */
     private Ohjain ohjain;
     
     /**

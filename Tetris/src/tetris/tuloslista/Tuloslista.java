@@ -14,8 +14,13 @@ import java.util.Scanner;
  * 
  */
 public class Tuloslista {
-    
+    /**
+     * tiedosto, johon tulokset kirjoitetaan, ja josta tulokset luetaan.
+     */
     private File tiedosto;
+    /**
+     * Scanner -olio, jonka avulla luetaan tulokset.
+     */
     private Scanner lukija;
     /**
      * Luo tuloslistan ja alustaa tiedoston oikeaksi tiedostoksi. 

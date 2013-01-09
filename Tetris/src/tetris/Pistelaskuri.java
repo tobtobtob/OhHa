@@ -5,8 +5,13 @@ package tetris;
  * Pistelaskuri pitää kirjaa pisteistä ja pelin sen hetkisestä tasosta.
  */
 public class Pistelaskuri {
-    
+    /**
+     * Pelaajan keräämät pisteet
+     */
     private int pisteet;
+    /**
+     * pelin taso. pisteiden kasvaessa myös taso kasvaa
+     */
     private int taso;
     
     /**

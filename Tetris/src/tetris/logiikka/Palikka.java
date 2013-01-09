@@ -5,8 +5,17 @@ import java.awt.Color;
 
 public abstract class Palikka {
     
+    /**
+     * Palikan muodon pelikentällä määrittävä totuusarvoja sisältävä taulukko
+     */
     protected boolean ruudukko[][];
+    /**
+     * Palikan väri
+     */
     private final Color vari;
+    /**
+     * Palikan taulukon (ruudun 0,0) sijainti pelialueella
+     */
     private int x, y;
     
     /**

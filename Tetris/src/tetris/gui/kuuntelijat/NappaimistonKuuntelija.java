@@ -12,6 +12,9 @@ import tetris.logiikka.Suunta;
  * 
  */
 public class NappaimistonKuuntelija implements KeyListener {
+    /**
+     * Pelilogiikan ohjain
+     */
     private Ohjain ohjain;
     /**
      * Luo näppäimistönKuuntelijan jolla on viite parametrina annettuun ohjaimeen.

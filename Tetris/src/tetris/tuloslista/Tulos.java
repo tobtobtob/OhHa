@@ -8,8 +8,13 @@ package tetris.tuloslista;
  * @author topi
  */
 public class Tulos implements Comparable<Tulos> {
-    
+    /**
+     * tuloksen pisteet
+     */
     private int pisteet;
+    /**
+     * tuloksen tekijän nimimerkki
+     */
     private String nimi;
     /**
      * Konstruktori luo tuloksen annetuilla pisteillä annetulle nimimerkille.
@@ -29,12 +34,7 @@ public class Tulos implements Comparable<Tulos> {
     public String getNimi() {
         return nimi;
     }
-    /**
-     * Mahdollistaa tulosten järjestämisen pisteiden mukaisesti laskevassa
-     * järjestyksessä.
-     * @param verrattava tulos
-     * @return 
-     */
+    
     @Override
     public int compareTo(Tulos verrattava) {
         return verrattava.pisteet- this.pisteet;

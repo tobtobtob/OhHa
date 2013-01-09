@@ -20,16 +20,31 @@ import tetris.gui.kuuntelijat.NappienKuuntelija;
  * 
  */
 public class Kayttoliittyma implements Runnable, Paivitettava {
-    
+    /**
+     * Pelin pääikkuna
+     */
     private JFrame frame;
+    /**
+     * Pelialueen leveys ruuduissa
+     */
     private int leveys;
+    /**
+     * Pelialueen korkeus ruuduissa
+     */
     private int korkeus;
+    /**
+     * yhden pelialueen ruudun koko
+     */
     private int ruudunKoko;
+    /**
+     * pelin ohjain
+     */
     private Ohjain ohjain;
+    /**
+     * Pelialusta, johon palikat piirretään
+     */
     private Pelialusta pelialusta;
-    private JButton uusiPeli, tauko;
-    private JPanel valikko;
-    private JButton tulokset;
+
     /**
      * Luo käyttöliittymän antaen parametrina koot, jotka käyttöliittymä  
      * välittää grafiikka- ja logiikkakomponenteille
@@ -76,9 +91,9 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
         pelialusta = new Pelialusta(ruudunKoko, ohjain);
         pelialusta.setBorder(BorderFactory.createEtchedBorder());
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
-        valikko = luoValikko();
+//        valikko = luoValikko();
         
-        container.add(valikko);
+        container.add(luoValikko());
         container.add(pelialusta);
         
         
@@ -96,11 +111,11 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
      */
     private JPanel luoValikko() {
         
-        valikko =new JPanel();
+        JPanel valikko =new JPanel();
         valikko.setLayout(new BoxLayout(valikko, BoxLayout.X_AXIS));
-        tulokset = new JButton("Tulokset");
-        uusiPeli = new JButton("Uusi peli");
-        tauko = new JButton("Tauko");       
+        JButton tulokset = new JButton("Tulokset");
+        JButton uusiPeli = new JButton("Uusi peli");
+        JButton tauko = new JButton("Tauko");       
         NappienKuuntelija kuuntelija = new NappienKuuntelija(tauko, uusiPeli, tulokset, ohjain, frame);
         uusiPeli.addActionListener(kuuntelija);
         tauko.addActionListener(kuuntelija);

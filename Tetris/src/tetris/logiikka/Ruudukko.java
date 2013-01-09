@@ -8,9 +8,19 @@ import java.util.ArrayList;
  * laillisuus, ja poistetaan täyttyneet rivit.
  */
 public class Ruudukko {
-    
+    /**
+     * Pelialuetta kuvaava ruudukko, johon päivitetään palikat totuusarvoina true,
+     * ja tyhjät ruudut totuusarvoina false
+     */
     private boolean[][] ruudukko;
-    private final int leveys, korkeus;
+    /**
+     * pelialueen leveys ruuduissa.
+     */
+    private final int leveys;
+    /**
+     * Pelialueen korkeus ruuduissa
+     */
+    private final int korkeus;
     /**
      * Konstruktori luo annettujen parametrien kokoisen taulukon jossa kaikki
      * alkiot ovat tyhjiä (eli false).

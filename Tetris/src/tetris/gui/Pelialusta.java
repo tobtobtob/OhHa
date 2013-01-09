@@ -1,14 +1,10 @@
 
 package tetris.gui;
 
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.io.PrintStream;
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import tetris.Ohjain;
 import tetris.logiikka.Palikka;
 
