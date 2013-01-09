@@ -1,10 +1,18 @@
 package tetris;
 
+import tetris.logiikka.palikat.PalikkaT;
+import tetris.logiikka.palikat.Suora;
+import tetris.logiikka.palikat.PalikkaS;
+import tetris.logiikka.palikat.PalikkaJ;
+import tetris.logiikka.palikat.PalikkaZ;
+import tetris.logiikka.palikat.Nelio;
+import tetris.logiikka.palikat.PalikkaL;
+import tetris.logiikka.Suunta;
+import tetris.logiikka.Palikka;
+import tetris.logiikka.Ruudukko;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import tetris.domain.*;
-import tetris.domain.palikat.*;
 import tetris.gui.Paivitettava;
 import tetris.tuloslista.Tuloslista;
 /**
@@ -45,11 +53,9 @@ public class Ohjain {
         kaynnissa = true;
         peliOhi = false;
         paivitaKayttoliittyma();
-        kello.kaynnista();
+        kello.start();
         pelinLoppu = false;
-        
-        
- 
+
     }
 
     public ArrayList<Palikka> getPalikat() {
@@ -63,7 +69,7 @@ public class Ohjain {
         tarkastaTaydetRivit();
         aktiivinen = luoSatunnainenPalikka();
         if(!ruudukko.voikoSiirtya(aktiivinen, aktiivinen.getX(), aktiivinen.getY())){
-            kello.pysayta();
+            kello.stop();
             aktiivinen = null;
             pelinLoppu = true;
             peliOhi = true;

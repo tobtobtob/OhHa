@@ -1,5 +1,5 @@
 
-package tetris;
+package tetris.tuloslista;
 
 import tetris.tuloslista.Tuloslista;
 import java.util.ArrayList;
@@ -46,6 +46,9 @@ public class TuloslistaTest {
         assertEquals("derp, 99 pistettä", tulokset[0]);
         assertEquals("herp, 3 pistettä", tulokset[1]);
     }
-    
+    @Test
+    public void palautusOikeaJosTuloslistaTyhja(){
+        assertEquals("", lista.getTulokset(1));
+    }
     
 }

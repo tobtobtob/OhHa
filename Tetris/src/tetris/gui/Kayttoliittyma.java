@@ -14,7 +14,11 @@ import tetris.Ohjain;
 import tetris.gui.kuuntelijat.NappaimistonKuuntelija;
 import tetris.gui.kuuntelijat.NappienKuuntelija;
 
-
+/**
+ * Käyttöliittymä luo kaikki pelin käyttöliittymäkomponentit.
+ * 
+ * 
+ */
 public class Kayttoliittyma implements Runnable, Paivitettava {
     
     private JFrame frame;
@@ -26,7 +30,15 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     private JButton uusiPeli, tauko;
     private JPanel valikko;
     private JButton tulokset;
-
+    /**
+     * Luo käyttöliittymän antaen parametrina koot, jotka käyttöliittymä  
+     * välittää grafiikka- ja logiikkakomponenteille
+     * 
+     * @param leveys
+     * @param korkeus
+     * @param yhden tetris-palan koko
+     * @param ohjain 
+     */
     public Kayttoliittyma(int leveys, int korkeus, int ruudunKoko, Ohjain ohjain) {
         this.leveys = leveys;
         this.korkeus = korkeus;
@@ -35,7 +47,9 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
     }
     
     
-    
+    /**
+     * Luo pelin pääikkunan, ja sen sisälle komponentit kutsumalla luoKomponentit() -metodia.
+     */
     @Override
     public void run() {
         frame = new JFrame("Tetris");
@@ -53,7 +67,10 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
         frame.setVisible(true);
         
     }
-
+    /**
+     * Metodi luo pelialusta, sekä valikon kutsumalla luoValikko() -metodia.
+     * @param container 
+     */
     private void luoKomponentit(Container container) {
         
         pelialusta = new Pelialusta(ruudunKoko, ohjain);
@@ -72,7 +89,11 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
         frame.setFocusable(true);
         
     }
-
+    /**
+     * metodi luo valikon napit, ja asettaa niille kuuntelijan.
+     * 
+     * @return 
+     */
     private JPanel luoValikko() {
         
         valikko =new JPanel();
@@ -90,7 +111,11 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
         
         return valikko;
     }
-
+    /**
+     * päivitettäessä käyttöliittymä asettaa näppäinten kuuntelun päälle/pois päältä
+     * jos peli on käynnissä/ ei käynnissä.
+     * Kun peli on ohi, metodi luo JDialog -ruudun pisteiden kirjaamista varten.
+     */
     @Override
     public void paivita() {
         
@@ -106,9 +131,16 @@ public class Kayttoliittyma implements Runnable, Paivitettava {
             tulosIkkuna();
         }
     }
+    /**
+     * Metodi luo JDialog -ikkunan pisteiden kirjaamista varten, ja näyttää sen jälkeen
+     * tuloslistan kokonaisuudessaan.
+     */
     public void tulosIkkuna(){
         String nimimerkki = JOptionPane.showInputDialog("Sait "+ohjain.getPisteet()+" pistettä, "
                 + "anna nimesi:");
+        if (nimimerkki == null){
+            nimimerkki = "";
+        }
         ohjain.tallennaPisteet(nimimerkki);
         JOptionPane.showMessageDialog(frame, ohjain.getTulokset(), "Ennätykset", JOptionPane.PLAIN_MESSAGE);
         ohjain.setPelinLoppu(false);

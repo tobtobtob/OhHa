@@ -2,12 +2,16 @@
 package tetris;
 
 import javax.swing.SwingUtilities;
-
 import tetris.gui.Kayttoliittyma;
-
-public class Main {
+/**
+ * Luokka luo käyttöliittymän ja ohjaimen ja käynnistää pelin.
+ */
+public class Tetris {
  
-    
+    /**
+     * Ohjelman aloitusmetodi luo käyttöliittymän ja ohjaimen ja käynnistää pelin.
+     * @param args 
+     */
     public static void main(String[] args) {
         
         Ohjain ohjain = new Ohjain(14, 20);

@@ -17,11 +17,20 @@ public class Tuloslista {
     
     private File tiedosto;
     private Scanner lukija;
-
+    /**
+     * Luo tuloslistan ja alustaa tiedoston oikeaksi tiedostoksi. 
+     */
     public Tuloslista() {
         tiedosto = new File("tuloslista.txt");
         
     }
+    /**
+     * Metodi kirjoittaa tuloslista.txt tiedostoon annetun pistesaldon 
+     * ja nimimerkin omalle rivilleen.
+     * 
+     * @param nimimerkki
+     * @param pisteet 
+     */
     public void kirjoitaTulos(String nimimerkki, int pisteet){
         try {
             FileWriter kirjoittaja = new FileWriter(tiedosto, true);
@@ -30,7 +39,11 @@ public class Tuloslista {
         } catch (IOException ex) {           
         }        
     }
-    
+    /**
+     * Metodi luo tuloslista.txt -tiedoston sisältämistä riveistä tulos 
+     * -olioita, ja palauttaa ne ArrayListinä
+     * @return lista tulos-olioista.
+     */
     public ArrayList<Tulos> luoTuloslista(){
         ArrayList<Tulos> tulokset;
         try {
@@ -46,6 +59,13 @@ public class Tuloslista {
         }
         return tulokset;
     }
+    /**
+     * Palauttaa tulokset merkkijonomuodossa järjestettynä riveittäin 
+     * suurimmasta pieninpään.
+     * 
+     * @param kuinka monta tulosta merkkijonoon sisällytetään.
+     * @return merkkijono tuloksista.
+     */
     public String getTulokset(int kuinkaMonta){
         ArrayList<Tulos> tulokset = luoTuloslista();
        String palautus = "";
@@ -56,6 +76,9 @@ public class Tuloslista {
         }
         return palautus;
     }
+    /**
+     * tyhjentää tuloslista.txt -tiedoston, eli tuloslistan tallentamat ennätykset.
+     */
     public void tyhjenna(){
         try {
             FileWriter kirjoittaja = new FileWriter(tiedosto);

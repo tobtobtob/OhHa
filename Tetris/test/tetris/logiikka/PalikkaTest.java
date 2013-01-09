@@ -1,19 +1,20 @@
-package tetris.domain;
+package tetris.logiikka;
 
 
 
+import tetris.logiikka.Suunta;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tetris.domain.Palikka;
-import tetris.domain.Ruudukko;
-import tetris.domain.palikat.Nelio;
-import tetris.domain.palikat.PalikkaJ;
-import tetris.domain.palikat.PalikkaT;
-import tetris.domain.palikat.PalikkaZ;
+import tetris.logiikka.Palikka;
+import tetris.logiikka.Ruudukko;
+import tetris.logiikka.palikat.Nelio;
+import tetris.logiikka.palikat.PalikkaJ;
+import tetris.logiikka.palikat.PalikkaT;
+import tetris.logiikka.palikat.PalikkaZ;
 
 
 public class PalikkaTest {

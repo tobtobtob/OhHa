@@ -1,29 +1,24 @@
 
-package tetris.domain.palikat;
+package tetris.logiikka.palikat;
 
 import java.awt.Color;
-import tetris.domain.Palikka;
+import tetris.logiikka.Palikka;
 
 
-public class PalikkaS extends Palikka {
+public class PalikkaT extends Palikka {
     /**
      * Konstruktori luo luokan nimen mukaisen palikan
      * @param palikan x-koordinaatti
      * @param palikan y-koordinaatti
      */
-    public PalikkaS(int x, int y) {
-        super(x, y, Color.CYAN);
+    public PalikkaT(int x, int y) {
+        super(x, y, Color.LIGHT_GRAY);
         boolean[][] uusiRuudukko = {
             { false, false, false },
-            { false, true , true },
-            { true, true, false }
+            { false, true , false },
+            { true, true, true }
         };
         super.ruudukko = uusiRuudukko;
     }
+    
 }
-
-                
-        
-    
-    
-

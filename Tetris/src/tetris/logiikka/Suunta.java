@@ -1,5 +1,5 @@
 
-package tetris.domain;
+package tetris.logiikka;
 
 /**
  * Suunta määrittää palikoiden siirtämiseen käytettävät suunnat oikea, vasen 

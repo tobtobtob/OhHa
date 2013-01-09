@@ -7,11 +7,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tetris.domain.Palikka;
-import tetris.domain.Suunta;
-import tetris.domain.palikat.Nelio;
-import tetris.domain.palikat.PalikkaZ;
-import tetris.domain.palikat.Suora;
+import tetris.logiikka.Palikka;
+import tetris.logiikka.Suunta;
+import tetris.logiikka.palikat.Nelio;
+import tetris.logiikka.palikat.PalikkaZ;
+import tetris.logiikka.palikat.Suora;
 
 
 public class OhjainTest {

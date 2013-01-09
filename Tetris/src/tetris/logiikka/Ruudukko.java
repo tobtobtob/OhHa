@@ -1,5 +1,5 @@
 
-package tetris.domain;
+package tetris.logiikka;
 
 import java.util.ArrayList;
 /**

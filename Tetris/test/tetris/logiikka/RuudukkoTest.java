@@ -1,4 +1,4 @@
-package tetris.domain;
+package tetris.logiikka;
 
 
 import java.util.ArrayList;
@@ -8,11 +8,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tetris.domain.Palikka;
-import tetris.domain.Ruudukko;
-import tetris.domain.palikat.Nelio;
-import tetris.domain.palikat.PalikkaJ;
-import tetris.domain.palikat.Suora;
+import tetris.logiikka.Palikka;
+import tetris.logiikka.Ruudukko;
+import tetris.logiikka.palikat.Nelio;
+import tetris.logiikka.palikat.PalikkaJ;
+import tetris.logiikka.palikat.Suora;
 
 
 public class RuudukkoTest {

@@ -10,11 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import tetris.Ohjain;
-import tetris.domain.Palikka;
+import tetris.logiikka.Palikka;
 
 /**
- * Grafiikkakomponentti, joka piirtää pelissä olevat palikat päivitettäessä.
- * 
+ * Grafiikkakomponentti, joka piirtää pelissä olevat palikat sekä pistetilanteen.
  */
 public class Pelialusta extends JPanel implements Paivitettava {
     private int ruudunKoko;
@@ -76,7 +75,9 @@ public class Pelialusta extends JPanel implements Paivitettava {
             }
         }
     }
-
+    /**
+     * Luo JLabelin pisteet, johon päivitetään pelin pistetilanne.
+     */
     private void luoPisteet() {
         pisteet = new JLabel(ohjain.getPisteet()+"");
         this.add(pisteet);

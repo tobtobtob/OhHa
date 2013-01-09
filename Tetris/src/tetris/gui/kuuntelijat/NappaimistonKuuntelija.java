@@ -4,12 +4,19 @@ package tetris.gui.kuuntelijat;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import tetris.Ohjain;
-import tetris.domain.Suunta;
+import tetris.logiikka.Suunta;
 
-
+/**
+ * NäppäimistönKuuntelija huolehti nuolinäppäimien kuuntelemisesta, ja tiedon
+ * välittämisestä ohjaimelle kun nuolinäppäimiä painetaan. 
+ * 
+ */
 public class NappaimistonKuuntelija implements KeyListener {
     private Ohjain ohjain;
-
+    /**
+     * Luo näppäimistönKuuntelijan jolla on viite parametrina annettuun ohjaimeen.
+     * @param ohjain 
+     */
     public NappaimistonKuuntelija(Ohjain ohjain) {
         this.ohjain = ohjain;
     }
@@ -17,7 +24,10 @@ public class NappaimistonKuuntelija implements KeyListener {
     public void keyTyped(KeyEvent e) {
         
     }
-
+    /**
+     * Kutsuu ohjainta, kun nuolinäppäimiä paintetaan.
+     * @param KeyEvent e
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_LEFT){

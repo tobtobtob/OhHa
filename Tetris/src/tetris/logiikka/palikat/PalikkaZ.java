@@ -1,8 +1,8 @@
 
-package tetris.domain.palikat;
+package tetris.logiikka.palikat;
 
 import java.awt.Color;
-import tetris.domain.Palikka;
+import tetris.logiikka.Palikka;
 
 
 public class PalikkaZ extends Palikka {

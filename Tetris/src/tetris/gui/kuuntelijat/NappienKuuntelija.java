@@ -7,13 +7,26 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import tetris.Ohjain;
-
+/**
+ * NappienKuuntelija vastaa käyttöliittymän nappien painallusten 
+ * välittämisestä sovelluslogiikalle. 
+ * 
+ */
 public class NappienKuuntelija implements ActionListener {
     
     private Ohjain ohjain;
     private JFrame frame;
     private JButton tauko, uusiPeli, tulokset;
-
+    /**
+     * Luo Nappienkuuntelijan, jolla on viitteet kaikkiin nappeihin, frameen
+     * sekä ohjaimeen.
+     * 
+     * @param tauko -nappi
+     * @param uusiPeli -nappi
+     * @param tulokset -nappi
+     * @param ohjain
+     * @param frame 
+     */
     public NappienKuuntelija(JButton tauko,JButton uusiPeli, JButton tulokset, Ohjain ohjain, JFrame frame) {
         this.tauko = tauko;
         this.uusiPeli = uusiPeli;
@@ -23,7 +36,12 @@ public class NappienKuuntelija implements ActionListener {
     }
     
     
-    
+    /**
+     * Kutsuu ohjaimen napin toimintaan liittyviä metodeja, kun jotain
+     * napeista painetaan. 
+     * 
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton kutsuja = (JButton) e.getSource();
@@ -48,9 +66,6 @@ public class NappienKuuntelija implements ActionListener {
                 ohjain.setKaynnissa(true);
             }
         }
-        
-     
     }
-    
-    
+
 }
