@@ -60,7 +60,7 @@ public class Tuloslista {
                 tulokset.add(new Tulos(Integer.parseInt(osat[0]), osat[1]));
             }
         } catch (FileNotFoundException ex) {
-            return null;
+            return new ArrayList<Tulos>();
         }
         return tulokset;
     }
