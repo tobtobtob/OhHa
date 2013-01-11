@@ -60,8 +60,8 @@ public class Ohjain {
     /**
      * Luo ohjaimen, joka luo pelilogiikan annteun kokoiselle pelialueelle.
      * 
-     * @param ruudukon leveys
-     * @param ruudukon korkeus 
+     * @param leveys ruudukon leveys
+     * @param korkeus ruudukon korkeus 
      */
     public Ohjain(int leveys, int korkeus){
        
@@ -242,7 +242,7 @@ public class Ohjain {
     }
     /**
      * lisää päivitettävä -rajapinnan toteuttavan olion päivitettäviin
-     * @param p 
+     * @param p Paivitettava 
      */
     public void lisaaPaivitettava(Paivitettava p){
         paivitettavat.add(p);
@@ -283,7 +283,7 @@ public class Ohjain {
     /**
      * asettaa käynnissä -muuttujan parametrina annettuun arvoon. jos uusi arvo
      * on false, pysäyttää kellon, jos true, käynnistää kellon.
-     * @param boolean kaynnissa 
+     * @param kaynnissa 
      */
     public void setKaynnissa(boolean kaynnissa){
         
@@ -308,7 +308,7 @@ public class Ohjain {
      * Kutsuu tuloslistaa tallentamaan pistetilanteen parametrina annetulle
      * nimimerkille
      * 
-     * @param nimimerkki 
+     * @param nimimerkki Palaajan nimimerkki
      */
     public void tallennaPisteet(String nimimerkki) {
         if(nimimerkki.equals("")){
@@ -325,14 +325,14 @@ public class Ohjain {
     }
     /**
      * Palauttaa kymmenen parasta tulosta merkkijonomuodossa.
-     * @return String tulokset
+     * @return tulokset
      */
     public String getTulokset(){
         return tuloslista.getTulokset(10);
     }
     /**
      * Asettaa pelinLoppu -muuttujan parametrina annettuun arvoon. 
-     * @param boolean b
+     * @param b
      */
     public void setPelinLoppu(boolean b) {
         pelinLoppu = b;

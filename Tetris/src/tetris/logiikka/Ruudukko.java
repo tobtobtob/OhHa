@@ -25,8 +25,8 @@ public class Ruudukko {
      * Konstruktori luo annettujen parametrien kokoisen taulukon jossa kaikki
      * alkiot ovat tyhjiä (eli false).
      * 
-     * @param ruudukon leveys   
-     * @param ruudukon korkeus
+     * @param leveys ruudukon leveys   
+     * @param korkeus ruudukon korkeus
      */
     public Ruudukko(int leveys, int korkeus) {
         this.leveys = leveys;
@@ -65,7 +65,7 @@ public class Ruudukko {
      * ruudukossa on arvo "true", metodi muuttaa ruudukkoon samaan paikkaan arvon
      * true.
      * 
-     * @param palikka, joka päivitetään ruudukkoon. 
+     * @param paivitettava palikka, joka päivitetään ruudukkoon. 
      */
     
     public void paivitaPalikka(Palikka paivitettava){
@@ -83,9 +83,9 @@ public class Ruudukko {
     /**
      * Metodi tarkistaa voiko parametrina annettu palikka siirtyä ruutuun (x,y)
      * 
-     * @param palikka, jota siirretään
-     * @param siirryttävän ruudun x-koordinaatti
-     * @param siirryttävän ruudun y-koordinaatti
+     * @param siirrettava palikka, jota siirretään
+     * @param x siirryttävän ruudun x-koordinaatti
+     * @param y siirryttävän ruudun y-koordinaatti
      * @return true, jos siirto mahdollinen, muuten false
      */
     public boolean voikoSiirtya(Palikka siirrettava, int x, int y){
@@ -98,8 +98,8 @@ public class Ruudukko {
      * (x,y).
      * 
      * @param palikanRuudukko
-     * @param siirryttävän paikan x-koordinaatti
-     * @param siirryttävän paikan y-koordinaatti
+     * @param x siirryttävän paikan x-koordinaatti
+     * @param y siirryttävän paikan y-koordinaatti
      * @return true, jos ruudukko sopii, muuten false
      */
     public boolean voikoSiirtya(boolean[][] palikanRuudukko, int x, int y){
@@ -120,9 +120,9 @@ public class Ruudukko {
      * ulkopuolella olevat "false" alkiot eivät vaikuta tulokseen, kunhan kaikki
      * "true" alkiot ovat ruudukon sisällä.
      * 
-     * @param tarkastettava ruudukko
-     * @param tarkastettavan ruudukon x-sijainti
-     * @param tarkastettavan ruudukon y-sijainti
+     * @param palikanRuudukko palikan ruudukko
+     * @param x tarkastettavan ruudukon x-sijainti
+     * @param y tarkastettavan ruudukon y-sijainti
      * @return true, jos ruudukon sisällä, false, jos ulkona.
      */
 
@@ -156,7 +156,7 @@ public class Ruudukko {
      * Metodi päivittää parametrina annetut palikat tähän ruudukkoon kutsumalla 
      * paivitaPalikka() -metodia yksitellen jokaiselle palikalle.
      * 
-     * @param ArrayList palikoista, jotka päivitetään ruudukkoon. 
+     * @param palikat ArrayList palikoista, jotka päivitetään ruudukkoon. 
      */
 
     public void paivitaPalikat(ArrayList<Palikka> palikat) {

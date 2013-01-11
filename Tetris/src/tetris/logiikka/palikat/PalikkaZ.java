@@ -9,9 +9,9 @@ import tetris.logiikka.Palikka;
  */
 public class PalikkaZ extends Palikka {
     /**
-     * Konstruktori luo luokan nimen mukaisen palikan
-     * @param palikan x-koordinaatti
-     * @param palikan y-koordinaatti
+     * Konstruktori luo luokan nimen muotoisen palikan
+     * @param x palikan x-koordinaatti
+     * @param y palikan y-koordinaatti
      */
     public PalikkaZ(int x, int y) {
         super(x, y, Color.GREEN);

@@ -25,9 +25,9 @@ public abstract class Palikka {
     /**
      * Palikan konstruktorissa määritetään sen koordinaatit ja väri. 
      * 
-     * @param palikan x-sijainti
-     * @param palikan y-sijainti
-     * @param palikan väri
+     * @param x palikan x-sijainti
+     * @param y palikan y-sijainti
+     * @param vari palikan väri
      */
     public Palikka(int x, int y, Color vari) {
         
@@ -43,7 +43,7 @@ public abstract class Palikka {
      * Jos rivi on palikan kohdalla, metodi poistaa kyseisen rivin kutsumalla
      * pudotaRivi() metodia.
      *
-     * @param ruudukon rivi, jolta poistetaan kaikki palikoiden osat. 
+     * @param rivi ruudukon rivi, jolta poistetaan kaikki palikoiden osat. 
      */
     public void poistaRivi(int rivi){
         if (rivi<y){
@@ -157,7 +157,7 @@ public abstract class Palikka {
      * rivi poistetaan, ja jokaista sen yläpuolella olevaa riviä siirretään yksi
      * rivi alaspäin.
      * 
-     * @param rivi, jolta poistetaan palikan osat.  
+     * @param ruudukonRivi rivi, jolta poistetaan palikan osat.  
      */
 
     private void pudotaRivi(int ruudukonRivi) {

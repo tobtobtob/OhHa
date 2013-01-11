@@ -11,8 +11,8 @@ import tetris.logiikka.Palikka;
 public class PalikkaJ extends Palikka {
     /**
      * Konstruktori luo luokan nimen muotoisen palikan
-     * @param palikan x-koordinaatti
-     * @param palikan y-koordinaatti
+     * @param x palikan x-koordinaatti
+     * @param y palikan y-koordinaatti
      */
     public PalikkaJ(int x, int y) {
         super(x, y, Color.BLUE);

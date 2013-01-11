@@ -17,3 +17,4 @@ maanantai 7.1 1h - sekvenssikaavioiden piirtäminen, JavaDoc
 maanantai 7.1 3h - ohjelmointia, testejä
 tiistai 8.1 2h - ohjelmointia, testejä
 keskiviikko 9.1 3h - viimeistelyä, javaDocin kirjoittamista
+perjantai 11.1 1h - viimeistelyä, tarkastamista, luokkakaavion lopullinen versio
